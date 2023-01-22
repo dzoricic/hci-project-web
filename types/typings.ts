@@ -1,3 +1,5 @@
+import { EntrancePass, TableArea } from "enums/enums";
+
 export interface FooterItem {
     imageSource: string;
     text: string;
@@ -16,5 +18,30 @@ export interface User {
     totalVisits: number;
     totalSpent: number;
     balance: number;
+    email: string;
+    phone: string;
     imageUrl?: string;
+    events?: Event[];
+}
+
+export interface Event {
+    id: string;
+    name: string;
+    date: string;
+}
+
+export interface Area {
+    id: string;
+    type: TableArea;
+    minimumPrice: number;
+    minimumGuests: number;
+    arrivalTime: string;
+    entrancePass: EntrancePass;
+    tables: Table[];
+}
+
+export interface Table {
+    id: string;
+    name: string;
+    price: number;
 }
