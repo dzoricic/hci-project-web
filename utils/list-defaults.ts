@@ -1,4 +1,22 @@
-import { FooterItem, HeaderItem, HomeItem } from 'typings';
+import { FooterItem, HeaderItem, HomeItem, TitlePicture } from 'typings';
+
+export const titlePictureData: TitlePicture[] = [
+    {
+        title: 'Drinks offer',
+        text: 'Only for you, we offer a wide range of drinks from every par of the world. Take a trip with us and enjoy!',
+        imageSource: '/photos/drinks.png'
+    },
+    {
+        title: 'Photo gallery',
+        text: 'Moon Club is one of the most beautiful clubs in the open. Check out our photo gallery and see for yourself!',
+        imageSource: '/photos/gallery.png'
+    },
+    {
+        title: 'Events',
+        text: 'We invite you to visit the world\'s greatest DJ names and everyday mainstream house programs, spiced with dance and stage performances',
+        imageSource: '/photos/event.png'
+    },
+]
 
 export const homeItems: HomeItem[] = [
     {

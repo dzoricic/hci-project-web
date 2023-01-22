@@ -9,3 +9,9 @@ export enum EntrancePass {
     VIP,
     VIP_PLUS
 }
+
+export enum Page {
+    DRINK_OFFER,
+    PHOTO_GALLERY,
+    EVENTS
+}

@@ -23,6 +23,12 @@ export interface HomeTitle {
     text: string;
 }
 
+export interface TitlePicture {
+    title: string;
+    text: string;
+    imageSource: string;
+}
+
 export interface User {
     id: string;
     firstName: string;

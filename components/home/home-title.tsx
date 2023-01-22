@@ -2,6 +2,7 @@ import { Grid, Text } from "@nextui-org/react";
 
 import { HomeTitle } from "typings";
 import styles from "styles/home-page.module.scss";
+import componentStyles from "styles/components.module.scss";
 
 import { rectangle } from "icons";
 
@@ -15,7 +16,7 @@ const HomeTitle = ({ homeTitle }: Props) => {
             <Grid xs={10} md={6} direction="column" alignItems="center">
                 <Text h2 css={{ margin: '3em 0 2em 0' }}>{homeTitle.title}</Text>
                 <img src={rectangle.src} width="50px"/>
-                <Text className={styles.textDecoration} css={{ margin: '4em 0', lineHeight: '3em' }}>{homeTitle.text}</Text>
+                <Text className={componentStyles.textDecoration} css={{ margin: '4em 0', lineHeight: '3em' }}>{homeTitle.text}</Text>
             </Grid>
         </Grid.Container>
     )
