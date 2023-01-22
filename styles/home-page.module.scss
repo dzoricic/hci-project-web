@@ -1,0 +1,13 @@
+@import './colors.module.scss';
+
+.textDecoration {
+    text-align: center;
+}
+
+.homeContainerButton {
+    font-weight: bold;
+}
+
+.homeContainerButton:hover {
+    background-color: $secondary_dark;
+}

@@ -5,9 +5,22 @@ export interface FooterItem {
     text: string;
 }
 
-export interface HeaderItems {
+export interface HeaderItem {
     label: string;
     url: string;
+}
+
+export interface HomeItem {
+    title: string;
+    text: string;
+    imageSource: string;
+    buttonText?: string;
+    navigationLink?: string;
+}
+
+export interface HomeTitle {
+    title: string;
+    text: string;
 }
 
 export interface User {
