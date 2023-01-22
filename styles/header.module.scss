@@ -1,0 +1,30 @@
+@import './colors.module.scss';
+
+.background {
+    background-color: $background_secondary !important;
+}
+
+.profile_picture {
+    border-radius: 50px;
+    width: 3em;
+}
+
+@keyframes opacityHover {
+  from {opacity: 1;}
+  to {opacity: 0.7;}
+}
+
+.profile_picture:hover {
+    cursor: pointer;
+    animation-name: opacityHover;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}
+
+.reservation_button:hover {
+    background-color: $primary_dark;
+}
+
+.login_button:hover {
+    background-color: $secondary_dark;
+}

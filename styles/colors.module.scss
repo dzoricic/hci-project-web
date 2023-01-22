@@ -1,0 +1,16 @@
+$primary: #7000FF;
+$primary_dark: #4803a1;
+$secondary: #FFFFFF;
+$secondary_dark: #ededed;
+$error: #FCC5D8;
+$background: #1E1E1E;
+$background_secondary: #2C2C2C;
+
+:export {
+    primary: $primary;
+    primary_dark: $primary_dark;
+    secondary: $secondary;
+    error: $error;
+    background: $background;
+    background_secondary: $background_secondary;
+}
