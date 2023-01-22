@@ -18,6 +18,11 @@ export interface HomeItem {
     navigationLink?: string;
 }
 
+export interface HomeTitle {
+    title: string;
+    text: string;
+}
+
 export interface User {
     id: string;
     firstName: string;

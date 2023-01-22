@@ -1,5 +1,6 @@
 import { Button, Grid, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
+
 import { HomeItem } from "typings";
 import styles from "styles/home-page.module.scss";
 
@@ -45,7 +46,7 @@ const ImageWithContent = ({ homeItem, isImageOnLeft }: Props) => {
     const resolveImageSide = () => {
         if (isImageOnLeft) {
             return (
-                <Grid.Container direction="row">
+                <Grid.Container direction="row" css={{ margin: '6em 0' }}>
                     {renderImage()}
                     {renderContent()}
                 </Grid.Container>

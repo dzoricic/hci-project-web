@@ -1,12 +1,10 @@
-import { ImageWithContent, PageWrapper } from "components";
-import { homeItems } from "utils";
+import { HomeTitle, ImageWithContent, PageWrapper } from "components";
+import { homeItems, homeTitle } from "utils";
 
 const Home = () => {
     const renderHomeItems = () => {
         return homeItems.map((item, index) => {
-            console.log(index);
             const isImageOnLeft = index % 2 === 0;
-            console.log(isImageOnLeft);
             return <ImageWithContent homeItem={item} isImageOnLeft={isImageOnLeft}/>
         })
     } 
@@ -14,6 +12,7 @@ const Home = () => {
     return (
         <PageWrapper>
             <main>
+                <HomeTitle homeTitle={homeTitle}/>
                 { renderHomeItems() }
             </main>
         </PageWrapper>
