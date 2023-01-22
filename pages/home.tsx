@@ -1,5 +1,9 @@
 import { HomeTitle, ImageWithContent, PageWrapper } from "components";
-import { homeItems, homeTitle } from "utils";
+
+import { homeItems, homeTitle, titlePictureData } from "utils";
+
+import TitlePicture from "components/title-picture";
+import { Page } from "enums";
 
 const Home = () => {
     const renderHomeItems = () => {
@@ -12,6 +16,7 @@ const Home = () => {
     return (
         <PageWrapper>
             <main>
+                <TitlePicture isHomeTitle titlePicture={titlePictureData[Page.HOME]}/>
                 <HomeTitle homeTitle={homeTitle}/>
                 { renderHomeItems() }
             </main>

@@ -10,7 +10,7 @@ export interface HeaderItem {
     url: string;
 }
 
-export interface HomeItem {
+export interface DefaultContainerItem {
     title: string;
     text: string;
     imageSource: string;
