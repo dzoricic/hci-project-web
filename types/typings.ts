@@ -10,7 +10,7 @@ export interface HeaderItem {
     url: string;
 }
 
-export interface HomeItem {
+export interface DefaultContainerItem {
     title: string;
     text: string;
     imageSource: string;
@@ -21,12 +21,6 @@ export interface HomeItem {
 export interface HomeTitle {
     title: string;
     text: string;
-}
-
-export interface TitlePicture {
-    title: string;
-    text: string;
-    imageSource: string;
 }
 
 export interface User {

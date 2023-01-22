@@ -1,11 +1,11 @@
 import { Button, Grid, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import { HomeItem } from "typings";
+import { DefaultContainerItem } from "typings";
 import styles from "styles/home-page.module.scss";
 
 interface Props {
-    homeItem: HomeItem
+    homeItem: DefaultContainerItem
     isImageOnLeft?: boolean;
 }
 

@@ -1,6 +1,6 @@
-import { FooterItem, HeaderItem, HomeItem, TitlePicture } from 'typings';
+import { FooterItem, HeaderItem, DefaultContainerItem } from 'typings';
 
-export const titlePictureData: TitlePicture[] = [
+export const titlePictureData: DefaultContainerItem[] = [
     {
         title: 'Drinks offer',
         text: 'Only for you, we offer a wide range of drinks from every par of the world. Take a trip with us and enjoy!',
@@ -16,9 +16,16 @@ export const titlePictureData: TitlePicture[] = [
         text: 'We invite you to visit the world\'s greatest DJ names and everyday mainstream house programs, spiced with dance and stage performances',
         imageSource: '/photos/event.png'
     },
+    {
+        title: 'Moon club',
+        text: 'Indoor & Outdoor floor, world top DJs, all-night parties. Join our clubbing familly!',
+        imageSource: '/photos/home.png',
+        navigationLink: '/reservation',
+        buttonText: 'Make a reservation'
+    }
 ]
 
-export const homeItems: HomeItem[] = [
+export const homeItems: DefaultContainerItem[] = [
     {
         title: 'Experience the best club nights on a while new level',
         text: 'We bring you only the best of what a night lifer can offer. Best DJs, magical lightshow and only the finest drniks. Make sure to place a reservation!',

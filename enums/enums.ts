@@ -13,5 +13,6 @@ export enum EntrancePass {
 export enum Page {
     DRINK_OFFER,
     PHOTO_GALLERY,
-    EVENTS
+    EVENTS,
+    HOME
 }
