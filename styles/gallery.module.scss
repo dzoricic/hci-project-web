@@ -1,0 +1,23 @@
+@keyframes opacityHover {
+    from {opacity: 1;}
+    to {opacity: 0.7;}
+}
+
+.galleryItem:hover {
+    cursor: pointer;
+    animation-name: opacityHover;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}
+
+.modalPhoto {
+    border-radius: 20px;
+    width: 20px;
+}
+
+.modalPhoto:hover {
+    cursor: pointer;
+    animation-name: opacityHover;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}

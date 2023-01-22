@@ -1,4 +1,55 @@
-import { FooterItem, HeaderItem, DefaultContainerItem } from 'typings';
+import { FooterItem, HeaderItem, DefaultContainerItem, GalleryImage } from 'typings';
+
+export const galleryList: GalleryImage[] = [
+    {
+        id: '1',
+        imageSource: '/gallery/gallery1.png'
+    },
+    {
+        id: '2',
+        imageSource: '/gallery/gallery2.png'
+    },
+    {
+        id: '3',
+        imageSource: '/gallery/gallery3.png'
+    },
+    {
+        id: '4',
+        imageSource: '/gallery/gallery4.png'
+    },
+    {
+        id: '5',
+        imageSource: '/gallery/gallery5.png'
+    },
+    {
+        id: '6',
+        imageSource: '/gallery/gallery6.png'
+    },
+    {
+        id: '7',
+        imageSource: '/gallery/gallery7.png'
+    },
+    {
+        id: '8',
+        imageSource: '/gallery/gallery8.png'
+    },
+    {
+        id: '9',
+        imageSource: '/gallery/gallery9.png'
+    },
+    {
+        id: '10',
+        imageSource: '/gallery/gallery10.png'
+    },
+    {
+        id: '11',
+        imageSource: '/gallery/gallery11.png'
+    },
+    {
+        id: '12',
+        imageSource: '/gallery/gallery12.png'
+    }
+]
 
 export const titlePictureData: DefaultContainerItem[] = [
     {
