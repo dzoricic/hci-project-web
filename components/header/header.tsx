@@ -1,4 +1,4 @@
-import { Navbar, Button } from "@nextui-org/react";
+import { Navbar, Button, Dropdown } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
 import styles from "styles/header.module.scss";
@@ -6,13 +6,26 @@ import { User } from "typings";
 import { headerItems } from "utils";
 
 import { default_picture, moon_logo } from "icons";
+import React from "react";
+import { userData } from "fake-data";
+import { Menu, MenuItem } from "@material-ui/core";
+import { useSnackbar } from "nextjs-toast";
 
 interface Props {
     user?: User;
 }
 
-const Header = ({ user }: Props) => {
+const Header = (props: Props) => {
+    const [user, setUser] = React.useState<User>();
     const router = useRouter();
+    const snackbar = useSnackbar();
+
+    React.useEffect(function onMount() {
+        const userId = localStorage.getItem('user_id');
+        if (userId) {
+            setUser(userData.find((usr) => usr.id === userId));
+        }
+    }, [])
 
     const resolveNavbarLinks = () => {
         return headerItems.map((item) => {
@@ -21,18 +34,28 @@ const Header = ({ user }: Props) => {
         })
     }
 
+    const onLogout = () => {
+        router.push('/home');
+        localStorage.removeItem('user_id');
+        setUser(undefined);
+        snackbar.showMessage("Successfully logged out!", "success", "filled");
+    }
+
     const resolveNavbarLogin = () => {
         if (user) {
             const profile_picture = user.imageUrl ?? default_picture.src;
             return (
                 <>
                     <Navbar.Item>
-                        <Button auto flat onClick={() => router.push("/reservation")} className={styles.reservation_button} css={{color: "White", backgroundColor: '$primary', borderRadius: '0.5em'}}>
+                        <Button auto flat onClick={() => router.push("/events")} className={styles.reservation_button} css={{color: "White", backgroundColor: '$primary', borderRadius: '0.5em'}}>
                             Make a reservation
                         </Button>
                     </Navbar.Item>
                     <Navbar.Item>
                         <img src={profile_picture} className={styles.profile_picture} onClick={() => router.push(`/user-profile/${user.id}`)}/>
+                    </Navbar.Item>
+                    <Navbar.Item>
+                        <Button auto light css={{ padding: 0 }} onClick={onLogout}>Log out</Button>
                     </Navbar.Item>
                 </>
             )

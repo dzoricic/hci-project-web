@@ -16,19 +16,19 @@ export const userData: User[] = [
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             },
             {
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             },
             {
                 id: "63cd1e28c3d7f061bb94a422",
                 name: "MP Thompson",
                 date: "2022-8-23",
-                imageSource: "/events/mp_thompson.png"
+                imageSource: "/static/events/mp_thompson.png"
             }
         ]
     },
@@ -42,31 +42,31 @@ export const userData: User[] = [
         balance: 12010,
         email: 'barambasic@fesb.hr',
         phone: '+385 12 345 6789',
-        imageUrl: 'profiles/arambasic.png',
+        imageUrl: '/static/profile/arambasic.png',
         events: [
             {
                 id: "63cd1e28957ca40cbf56d696",
                 name: "Steve Aoki",
                 date: "2022-9-13",
-                imageSource: "/events/steve_aoki1.png"
+                imageSource: "/static/events/steve_aoki1.png"
             },
             {
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             },
             {
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             },
             {
                 id: "63cd1e28c3d7f061bb94a422",
                 name: "MP Thompson",
                 date: "2022-8-23",
-                imageSource: "/events/mp_thompson.png"
+                imageSource: "/static/events/mp_thompson.png"
             }
         ]
     },
@@ -86,13 +86,13 @@ export const userData: User[] = [
                 id: "63cd1e28957ca40cbf56d696",
                 name: "Steve Aoki",
                 date: "2022-9-13",
-                imageSource: "/events/steve_aoki1.png"
+                imageSource: "/static/events/steve_aoki1.png"
             },
             {
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             }
         ]
     },
@@ -112,25 +112,25 @@ export const userData: User[] = [
                 id: "63cd1e28957ca40cbf56d696",
                 name: "Steve Aoki",
                 date: "2022-9-13",
-                imageSource: "/events/steve_aoki1.png"
+                imageSource: "/static/events/steve_aoki1.png"
             },
             {
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             },
             {
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             },
             {
                 id: "63cd1e28c3d7f061bb94a422",
                 name: "MP Thompson",
                 date: "2022-8-23",
-                imageSource: "/events/mp_thompson.png"
+                imageSource: "/static/events/mp_thompson.png"
             }
         ]
     },
@@ -149,25 +149,25 @@ export const userData: User[] = [
                 id: "63cd1e28957ca40cbf56d696",
                 name: "Steve Aoki",
                 date: "2022-9-13",
-                imageSource: "/events/steve_aoki1.png"
+                imageSource: "/static/events/steve_aoki1.png"
             },
             {
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             },
             {
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             },
             {
                 id: "63cd1e28c3d7f061bb94a422",
                 name: "MP Thompson",
                 date: "2022-8-23",
-                imageSource: "/events/mp_thompson.png"
+                imageSource: "/static/events/mp_thompson.png"
             }
         ]
     },
@@ -187,7 +187,7 @@ export const userData: User[] = [
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             }
         ]
     },
@@ -218,13 +218,13 @@ export const userData: User[] = [
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             },
             {
                 id: "63cd1e28c3d7f061bb94a422",
                 name: "MP Thompson",
                 date: "2022-8-23",
-                imageSource: "/events/mp_thompson.png"
+                imageSource: "/static/events/mp_thompson.png"
             }
         ]
     },
@@ -244,7 +244,7 @@ export const userData: User[] = [
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             }
         ]
     },
@@ -264,19 +264,19 @@ export const userData: User[] = [
                 id: "63cd1e28957ca40cbf56d696",
                 name: "Steve Aoki",
                 date: "2022-9-13",
-                imageSource: "/events/steve_aoki1.png"
+                imageSource: "/static/events/steve_aoki1.png"
             },
             {
                 id: "63cd1e28a566884fa89fc303",
                 name: "DJ Tiesto",
                 date: "2022-8-11",
-                imageSource: "/events/dj_tiesto1.png"
+                imageSource: "/static/events/dj_tiesto1.png"
             },
             {
                 id: "63cd1e282bfcaf3e8540a5ee",
                 name: "Martin Garrix",
                 date: "2022-2-16",
-                imageSource: "/events/martin_garrix1.png"
+                imageSource: "/static/events/martin_garrix1.png"
             }
         ]
     }

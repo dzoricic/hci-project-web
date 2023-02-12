@@ -17,6 +17,7 @@ const ImageWithContent = ({ homeItem, isImageOnLeft }: Props) => {
             return (
                 <Button
                     auto
+                    size='xl'
                     onClick={() => router.push(link)}
                     css={{color: 'Black', backgroundColor: '$secondary'}}
                     className={styles.homeContainerButton}
@@ -28,8 +29,8 @@ const ImageWithContent = ({ homeItem, isImageOnLeft }: Props) => {
     const renderContent = () => {
         return (
             <Grid xs={12} md={4.5} direction="column" justify="space-between" alignItems="center" css={{padding: '6em 3em', backgroundColor: '$background_secondary'}}>
-                <Text h2 className={styles.textDecoration}>{homeItem.title}</Text>
-                <Text className={styles.textDecoration} css={{lineHeight: '3em'}}>{homeItem.text}</Text>
+                <Text h1 css={{ textAlign: "center" }}>{homeItem.title}</Text>
+                <Text css={{lineHeight: '3em', fontSize: '1.2em', padding: "0 3em", textAlign: "center"}}>{homeItem.text}</Text>
                 { resolveButton(homeItem.buttonText, homeItem.navigationLink) }
             </Grid>
         )

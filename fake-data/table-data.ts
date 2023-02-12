@@ -93,12 +93,22 @@ export const tableData: Table[] = [
     },
     {
         id: "63cd14116a5a4368a7a345bf",
-        name: "V1",
-        price: 500
+        name: "VA1",
+        price: 300
     },
     {
         id: "63cd1411b9f5b4452227e4eb",
-        name: "V2",
+        name: "VA2",
         price: 400
+    },
+    {
+        id: "63cd14116a5a4368a7a345ef",
+        name: "VA3",
+        price: 400
+    },
+    {
+        id: "63cd1411b9f5b4452227e4ac",
+        name: "VA4",
+        price: 500
     }
   ]

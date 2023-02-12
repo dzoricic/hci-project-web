@@ -1,0 +1,27 @@
+@keyframes opacityHover {
+    from {opacity: 1;}
+    to {opacity: 0.7;}
+}
+
+.tableAreaContainer:hover {
+    cursor: pointer;
+    animation-name: opacityHover;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}
+
+@keyframes opacityHoverButton {
+    from {opacity: 0.4;}
+    to {opacity: 0.7;}
+}
+
+.tableAreaContainerButton {
+    opacity: 0.4;
+}
+
+.tableAreaContainerButton:hover {
+    cursor: pointer;
+    animation-name: opacityHoverButton;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}

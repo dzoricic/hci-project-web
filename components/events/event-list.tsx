@@ -1,4 +1,7 @@
 import { Grid, Text } from "@nextui-org/react";
+import { useRouter } from "next/router";
+import { useSnackbar } from "nextjs-toast";
+import React from "react";
 import { EventData } from "typings";
 import EventContainer from "./event-container";
 
@@ -7,6 +10,13 @@ interface Props {
 }
 
 const EventList = ({ events }: Props) => {
+    const router = useRouter();
+    const snackbar = useSnackbar();
+    const [loggedInId, setLoggedInId] = React.useState<string | null>();
+    
+    React.useEffect(function onMount() {
+        setLoggedInId(localStorage.getItem('user_id'));
+    }, [])
 
     const resolveUpcomingEvents = () => {
         const upcomingEvents = resolveEvents(true);
@@ -15,11 +25,32 @@ const EventList = ({ events }: Props) => {
 
     const resolvePastEvents = () => {
         const pastEvents = resolveEvents(false);
-        return renderEvents(pastEvents);
+        return renderEvents(pastEvents, true);
     }
 
-    const renderEvents = (events: EventData[]) => {
-        return events.map((event) => <EventContainer event={event} onClick={() => undefined}/>)
+    const scrollToUpcomingEvents = () => {
+        const scrollItem = document.getElementById('upcoming-events');
+        if (!scrollItem) {
+            console.log("scroll didnt work...");
+            return;
+        }
+        scrollItem.scrollIntoView({behavior: 'smooth'});
+    }
+
+    const navigateToReservation = (id?: string) => {
+        if (!loggedInId) {
+            snackbar.showMessage("Login or register to make a reservation", "info", "filled");
+            return;
+        }
+        if (!id) {
+            router.push('oops');
+            return;
+        }
+        router.push(`reservation/${id}`);
+    }
+
+    const renderEvents = (events: EventData[], isPastEvent?: boolean) => {
+        return events.map((event) => <EventContainer isPastEvent={isPastEvent} event={event} onClick={navigateToReservation} scrollBack={scrollToUpcomingEvents}/>)
     }
 
     const resolveEvents = (isUpcomingEvent: boolean) => {
@@ -44,7 +75,7 @@ const EventList = ({ events }: Props) => {
 
     return (
         <Grid.Container direction="column" alignItems="center" css={{ padding: "3em 5em" }}>
-            <Grid.Container>
+            <Grid.Container id='upcoming-events'>
                 {resolveUpcomingEvents()}
             </Grid.Container>
             <Grid>
