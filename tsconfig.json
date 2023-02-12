@@ -21,6 +21,7 @@
       "components": ["components/index"],
       "styles/*": ["styles/*"],
       "icons": ["icons"],
+      "icons/*": ["icons/*"],
       "fake-data": ["fake-data/index"],
       "enums": ["enums/index"]
     }

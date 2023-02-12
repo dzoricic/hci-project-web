@@ -14,9 +14,9 @@ const Footer = () => {
 
     const renderFooterHeader = () => {
         return (
-            <Grid className={styles.header}>
-                <img src={moon_logo.src} width='200px'/>
-            </Grid>
+            <Grid.Container xs={3} justify="center" css={{ padding: "3em" }}>
+                <img src={moon_logo.src}/>
+            </Grid.Container>
         )
     }
 
@@ -25,7 +25,7 @@ const Footer = () => {
         const columnCount = Math.round(length / 2);
 
         return (
-            <Grid.Container gap={2} direction="row" justify="center" alignItems="center" css={{padding: 0, margin: 0}}>
+            <Grid.Container xs={6} gap={3} direction="row" justify="center" alignItems="center" css={{padding: 0, margin: 0}}>
                 <Grid direction="column" alignItems="center" md={6} lg={4}>
                     <Grid>
                         {renderFooterItems(footerItems.slice(0, columnCount))}
@@ -41,7 +41,7 @@ const Footer = () => {
     }
 
     return (
-        <Grid.Container className={styles.background} direction="column" alignItems="center">
+        <Grid.Container className={styles.background} direction="row">
             {renderFooterHeader()}
             {renderFooterContent()}
         </Grid.Container>

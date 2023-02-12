@@ -1,6 +1,7 @@
 import  '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { createTheme, NextUIProvider } from '@nextui-org/react'
+import { SnackbarProvider } from 'nextjs-toast'
 
 const theme = createTheme({
   type: "dark", // it could be "light" or "dark"
@@ -20,7 +21,9 @@ const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider theme={theme}>
-      <Component {...pageProps}/>
+      <SnackbarProvider SnackbarProps={{ autoHideDuration: 4000 }}>
+        <Component {...pageProps}/>
+      </SnackbarProvider>
     </NextUIProvider>
   )
 }

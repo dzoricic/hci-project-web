@@ -1,5 +1,13 @@
 @import './colors.module.scss';
 
+
+@font-face {
+  font-family: "Nobile";
+  src: url('https://fonts.googleapis.com/css2?family=Nobile&display=swap');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html,
 body,
 #__next,

@@ -3,21 +3,6 @@ import { Area } from "typings";
 
 export const areaData: Area[] = [
     {
-        id: "63cd0f5e9ff34ca125767e42",
-        type: TableArea.VIP,
-        minimumPrice: 300,
-        minimumGuests: 5,
-        arrivalTime: "23:00",
-        entrancePass: EntrancePass.VIP,
-        tables: [
-            {
-                id: "63cd1411b9f5b4452227e4eb",
-                name: "V2",
-                price: 400
-            }
-        ]
-    },
-    {
         id: "63cd0f5e932d28cbab6c67d5",
         type: TableArea.STAGE,
         minimumPrice: 80,
@@ -88,20 +73,6 @@ export const areaData: Area[] = [
         ]
     },
     {
-        id: "63cd0f5e9cd1fa15756c96bb",
-        type: TableArea.VIP,
-        minimumPrice: 400,
-        minimumGuests: 5,
-        arrivalTime: "23:00",
-        entrancePass: EntrancePass.VIP_PLUS,
-        tables: [
-            {
-                id: "63cd14116a5a4368a7a345bf",
-                name: "V1",
-                price: 500
-            },]
-    },
-    {
         id: "63cd0f5e8669f4c7229395b7",
         type: TableArea.BAR,
         minimumPrice: 120,
@@ -138,6 +109,46 @@ export const areaData: Area[] = [
                 id: "63cd1411950b02d9bf7d3c81",
                 name: "BC2",
                 price: 120
+            }
+        ]
+    },
+    {
+        id: "63cd0f5e9ff34ca125767e42",
+        type: TableArea.VIP,
+        minimumPrice: 300,
+        minimumGuests: 5,
+        arrivalTime: "23:00",
+        entrancePass: EntrancePass.VIP,
+        tables: [
+            {
+                id: "63cd14116a5a4368a7a345bf",
+                name: "VA1",
+                price: 300
+            },
+            {
+                id: "63cd1411b9f5b4452227e4eb",
+                name: "VA2",
+                price: 400
+            }
+        ]
+    },
+    {
+        id: "63cd0f5e9cd1fa15756c96bb",
+        type: TableArea.VIP,
+        minimumPrice: 400,
+        minimumGuests: 5,
+        arrivalTime: "23:00",
+        entrancePass: EntrancePass.VIP_PLUS,
+        tables: [
+            {
+                id: "63cd14116a5a4368a7a345ef",
+                name: "VA3",
+                price: 400
+            },
+            {
+                id: "63cd1411b9f5b4452227e4ac",
+                name: "VA4",
+                price: 500
             }
         ]
     }

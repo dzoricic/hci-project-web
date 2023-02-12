@@ -39,13 +39,14 @@ export interface User {
     email: string;
     phone: string;
     imageUrl?: string;
-    events?: Event[];
+    events?: EventData[];
 }
 
-export interface Event {
+export interface EventData {
     id: string;
     name: string;
     date: string;
+    imageSource: string;
 }
 
 export interface Area {
