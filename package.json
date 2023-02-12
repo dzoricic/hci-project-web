@@ -29,5 +29,8 @@
   },
   "devDependencies": {
     "@types/lodash": "^4.14.191"
+  },
+  "overrides": {
+    "@material-ui/types": "4.1.1"
   }
 }
