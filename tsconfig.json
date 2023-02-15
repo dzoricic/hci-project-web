@@ -16,7 +16,7 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "react-simple-snackbar": ["components/snackbar/types.d.ts"],
+      "react-simple-snackbar": ["components/snackbar/src/index.js"],
       "typings": ["types/typings"],
       "utils": ["utils/index"],
       "components": ["components/index"],
@@ -28,5 +28,5 @@
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
+  "exclude": ["node_modules"]
 }

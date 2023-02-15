@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { CSSTransition } from 'react-transition-group'
-import styles from './Snackbar.css'
+import styles from './Snackbar.module.css'
 
 // Snackbar default values
 export const defaultPosition = 'bottom-center'
