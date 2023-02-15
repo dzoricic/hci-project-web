@@ -1,14 +1,13 @@
 import { Navbar, Button, Dropdown } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import styles from "styles/header.module.scss";
+// import styles from "styles/header.module.scss";
 import { User } from "typings";
 import { headerItems } from "utils";
 
 import { default_picture, moon_logo } from "icons";
 import React from "react";
 import { userData } from "fake-data";
-import { Menu, MenuItem } from "@material-ui/core";
 import { useSnackbar } from "react-simple-snackbar";
 
 interface Props {

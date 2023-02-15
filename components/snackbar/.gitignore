@@ -1,0 +1,10 @@
+**/node_modules
+**/.cache
+/site/dist
+.DS_Store
+npm-debug.log*
+
+# Let the index.js to get the size badge
+/dist/index.es.js
+/dist/index.es.js.map
+/dist/index.js.map

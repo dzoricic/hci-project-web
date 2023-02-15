@@ -1,0 +1,233 @@
+/* Resets */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+}
+
+/* ol,
+ul {
+  list-style: none;
+} */
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+input {
+  outline-width: 0.3em;
+  outline-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+.input:disabled {
+  background-color: transparent;
+}
+
+/* button {
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin: 0;
+}
+
+input,
+button {
+  text-transform: inherit;
+  font-family: inherit;
+  letter-spacing: inherit;
+  border: none;
+} */
+
+/* Responsiveness */
+img,
+iframe,
+object,
+embed,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+/* Basic Styles */
+html {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.72);
+  scroll-behavior: smooth;
+}
+
+h1,
+h2,
+p,
+pre {
+  margin: 1.6rem 0;
+}
+
+h1 {
+  font-size: 3.6rem;
+  font-weight: bold;
+  line-height: 4.9rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid #eaecef;
+}
+
+h2 {
+  font-size: 2.4rem;
+  font-weight: bold;
+  line-height: 3.3rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  line-height: 2.2rem;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+a {
+  color: cornflowerblue;
+}
+
+ul {
+  padding-left: 2em;
+}
+
+pre {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  padding: 1.6rem;
+  font-family: Menlo, monospace;
+  overflow-x: auto;
+  border-radius: 4px;
+}
+
+code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(27, 31, 35, 0.05);
+  font-family: Menlo, monospace;
+  border-radius: 3px;
+}
+
+blockquote {
+  padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 2.4rem 1.6rem;
+  max-width: 864px;
+}
+
+.title {
+  text-align: center;
+  position: relative;
+}
