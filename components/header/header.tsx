@@ -1,7 +1,7 @@
 import { Navbar, Button, Dropdown } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-// import styles from "styles/header.module.scss";
+import styles from "styles/header.module.scss";
 import { User } from "typings";
 import { headerItems } from "utils";
 
