@@ -2,7 +2,7 @@
   "name": "hci-project-web",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@6.3.2",
+  "packageManager": "npm@6.3.2",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
