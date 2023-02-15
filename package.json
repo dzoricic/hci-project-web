@@ -15,7 +15,7 @@
     "@types/react-dom": "16.8.0",
     "babel": "^6.23.0",
     "eslint": "^6.0.0",
-    "eslint-config-next": "^10.2.1",
+    "eslint-config-next": "0.2.4",
     "lodash": "^4.17.21",
     "next": "13.0.6",
     "node-sass": "^6.0.0",
