@@ -1,7 +1,7 @@
 import { Grid, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
-import { useSnackbar } from "nextjs-toast";
 import React from "react";
+import { useSnackbar } from "react-simple-snackbar";
 import { EventData } from "typings";
 import EventContainer from "./event-container";
 
@@ -11,7 +11,11 @@ interface Props {
 
 const EventList = ({ events }: Props) => {
     const router = useRouter();
-    const snackbar = useSnackbar();
+    const [openInfoSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "blue"
+        }
+    });
     const [loggedInId, setLoggedInId] = React.useState<string | null>();
     
     React.useEffect(function onMount() {
@@ -39,7 +43,7 @@ const EventList = ({ events }: Props) => {
 
     const navigateToReservation = (id?: string) => {
         if (!loggedInId) {
-            snackbar.showMessage("Login or register to make a reservation", "info", "filled");
+            openInfoSnackbar("Login or register to make a reservation");
             return;
         }
         if (!id) {

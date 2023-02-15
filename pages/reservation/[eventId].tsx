@@ -12,11 +12,15 @@ import { Area, EventData, Table, User } from "typings";
 import styles from "styles/home-page.module.scss";
 import Summary from "components/reservations/summary";
 import { eventData } from "fake-data/event-data";
-import { useSnackbar } from "nextjs-toast";
+import { useSnackbar } from "react-simple-snackbar";
 
 const Reservation = () => {
     const router = useRouter();
-    const snackbar = useSnackbar();
+    const [openErrorSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "red"
+        }
+    });
     const [user, setUser] = React.useState<User>();
     const [event, setEvent] = React.useState<EventData>();
     const [selectedArea, setSelectedArea] = React.useState<Area>();
@@ -29,7 +33,7 @@ const Reservation = () => {
         const { eventId } = router.query;
         const loggedInUserId = localStorage.getItem('user_id');
         if (!loggedInUserId) {
-            snackbar.showMessage("Cannot access this page without login!", "error", "filled");
+            openErrorSnackbar("Cannot access this page without login!");
             router.push('/login');
             return;
         }

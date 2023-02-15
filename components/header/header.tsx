@@ -9,7 +9,7 @@ import { default_picture, moon_logo } from "icons";
 import React from "react";
 import { userData } from "fake-data";
 import { Menu, MenuItem } from "@material-ui/core";
-import { useSnackbar } from "nextjs-toast";
+import { useSnackbar } from "react-simple-snackbar";
 
 interface Props {
     user?: User;
@@ -18,7 +18,11 @@ interface Props {
 const Header = (props: Props) => {
     const [user, setUser] = React.useState<User>();
     const router = useRouter();
-    const snackbar = useSnackbar();
+    const [openSuccessSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "green"
+        }
+    });
 
     React.useEffect(function onMount() {
         const userId = localStorage.getItem('user_id');
@@ -38,7 +42,7 @@ const Header = (props: Props) => {
         router.push('/home');
         localStorage.removeItem('user_id');
         setUser(undefined);
-        snackbar.showMessage("Successfully logged out!", "success", "filled");
+        openSuccessSnackbar("Successfully logged out!");
     }
 
     const resolveNavbarLogin = () => {

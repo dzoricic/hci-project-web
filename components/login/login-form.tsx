@@ -2,8 +2,8 @@ import { Button, Grid, Input, Text } from "@nextui-org/react";
 import { userData } from "fake-data";
 import { facebook, google } from "icons";
 import { useRouter } from "next/router";
-import { useSnackbar } from "nextjs-toast";
 import React from "react";
+import { useSnackbar } from "react-simple-snackbar";
 import styles from "styles/home-page.module.scss";
 
 interface Props {
@@ -17,7 +17,16 @@ const LoginForm = ({ isLogin }: Props) => {
     const [lastname, setLastname] = React.useState<string>();
 
     const router = useRouter();
-    const snackbar = useSnackbar();
+    const [openSuccessSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "green"
+        }
+    });
+    const [openErrorSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "red"
+        }
+    });
 
     React.useEffect(function onMount() {
         if (isLogin) {
@@ -55,11 +64,11 @@ const LoginForm = ({ isLogin }: Props) => {
         const user = userData.find((u) => u.userName === username);
         if (user) {
             localStorage.setItem('user_id', user.id);
-            snackbar.showMessage('Successfully Logged In', 'success', 'filled');
+            openSuccessSnackbar("Successfully Logged In");
             router.push('/home');
             return;
         }
-        snackbar.showMessage('User does not exist', 'error', 'filled');
+        openErrorSnackbar("User does not exist");
     }
 
     const resolveEnterKey = (key: string) => {

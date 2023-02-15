@@ -5,11 +5,20 @@ import { useRouter } from "next/router";
 import React from "react";
 import { EventData, User } from "typings";
 import styles from "styles/home-page.module.scss";
-import { useSnackbar } from "nextjs-toast";
+import { useSnackbar } from "react-simple-snackbar";
 
 const UserProfile = () => {
     const router = useRouter();
-    const snackbar = useSnackbar();
+    const [openSuccessSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "green"
+        }
+    });
+    const [openErrorSnackbar] = useSnackbar({
+        style: {
+            backgroundColor: "red"
+        }
+    });
     const [loggedInId, setLoggedInId] = React.useState<string>();
 
     const [user, setUser] = React.useState<User | undefined>();
@@ -82,7 +91,7 @@ const UserProfile = () => {
 
     const saveChanges = () => {
         if (!user) {
-            snackbar.showMessage("Could not save changes!", "error", "filled");
+            openErrorSnackbar("Could not save changes!");
             return;
         }
         const newUser: User = {
@@ -99,7 +108,7 @@ const UserProfile = () => {
             imageUrl: user.imageUrl
         }
         setUser(newUser);
-        snackbar.showMessage("Lets pretend the changes are saved!", "success", "filled");
+        openSuccessSnackbar("Lets pretend the changes are saved!");
     }
 
     const renderUserProfile = () => {
