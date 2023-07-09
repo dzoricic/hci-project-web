@@ -1,9 +1,10 @@
-import { Grid, Text } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import React from "react";
-import { useSnackbar } from "react-simple-snackbar";
 import { EventData } from "typings";
 import EventContainer from "./event-container";
+import { useUserContext } from "common/user-context/use-user-context";
+import styles from "./events.module.scss";
+import { toast } from "react-toastify";
 
 interface Props {
     events: EventData[];
@@ -11,16 +12,7 @@ interface Props {
 
 const EventList = ({ events }: Props) => {
     const router = useRouter();
-    const [openInfoSnackbar] = useSnackbar({
-        style: {
-            backgroundColor: "blue"
-        }
-    });
-    const [loggedInId, setLoggedInId] = React.useState<string | null>();
-    
-    React.useEffect(function onMount() {
-        setLoggedInId(localStorage.getItem('user_id'));
-    }, [])
+    const { user } = useUserContext();
 
     const resolveUpcomingEvents = () => {
         const upcomingEvents = resolveEvents(true);
@@ -42,8 +34,10 @@ const EventList = ({ events }: Props) => {
     }
 
     const navigateToReservation = (id?: string) => {
-        if (!loggedInId) {
-            openInfoSnackbar("Login or register to make a reservation");
+        if (!user || !user.id) {
+            toast.info("Login to make a reservation.", {
+                position: toast.POSITION.BOTTOM_LEFT
+            });
             return;
         }
         if (!id) {
@@ -78,17 +72,20 @@ const EventList = ({ events }: Props) => {
     }
 
     return (
-        <Grid.Container direction="column" alignItems="center" css={{ padding: "3em 5em" }}>
-            <Grid.Container id='upcoming-events'>
+        <div className={styles.container}>
+            <div>
+                <span className={styles.dividerTitle}>Check out our lineup</span>
+            </div>
+            <div id="upcoming-events" className={styles.eventList}>
                 {resolveUpcomingEvents()}
-            </Grid.Container>
-            <Grid>
-                <Text h2 css={{ padding: "4em 0 2em 0" }}>Past events</Text>
-            </Grid>
-            <Grid.Container>
+            </div>
+            <div className={styles.divider}>
+                <span className={styles.dividerTitle}>Past events</span>
+            </div>
+            <div className={styles.eventList}>
                 {resolvePastEvents()}
-            </Grid.Container>
-        </Grid.Container>
+            </div>
+        </div>
     )
 }
 

@@ -16,7 +16,6 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "react-simple-snackbar": ["components/snackbar/src/index.js"],
       "typings": ["types/typings"],
       "utils": ["utils/index"],
       "components": ["components/index"],

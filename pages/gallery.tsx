@@ -6,7 +6,7 @@ import { Page } from "enums";
 import { GalleryImage } from "typings";
 
 import { galleryList, titlePictureData } from "utils";
-import TitlePicture from "components/title-picture";
+import TitlePicture from "components/title/title-picture";
 import GalleryModal from "components/gallery/gallery-modal";
 
 const Gallery = () => {
@@ -52,7 +52,7 @@ const Gallery = () => {
     return (
         <PageWrapper>
             <main>
-                <TitlePicture titlePicture={titlePictureData[Page.PHOTO_GALLERY]}/>
+                <TitlePicture picture={titlePictureData[Page.PHOTO_GALLERY]}/>
                 <Grid.Container css={{ padding: '5em' }}>
                     { renderGalleryList() }
                 </Grid.Container>

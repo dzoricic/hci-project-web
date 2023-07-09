@@ -1,0 +1,78 @@
+@import '../../styles/colors.module.scss';
+
+.primaryButton {
+    display: flex;
+    align-items: center;
+
+    border-width: 0;
+    border-radius: 5px;
+    padding: 10px 25px;
+    height: 45px;
+    width: fit-content;
+
+    color: white;
+    background-color: $primary;
+    &:hover {
+        background-color: $primary_dark;
+    }
+}
+
+.secondaryButton {
+    display: flex;
+    align-items: center;
+
+    border-width: 0;
+    border-radius: 5px;
+    padding: 10px 25px;
+    width: fit-content;
+
+    color: black;
+    background-color: $secondary;
+    &:hover {
+        background-color: $secondary_dark;
+    }
+}
+
+.navbarButton {
+    display: flex;
+    align-items: center;
+
+    border-width: 0 0 5px 0;
+    border-radius: 5px;
+    border-color: transparent;
+
+    cursor: pointer;
+
+    margin-left: 30px;
+    padding: 10px 25px 5px 25px;
+    width: fit-content;
+
+    color: white;
+    background-color: transparent;
+    &:hover {
+        background-color: $background_secondary;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .primaryButton {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .primaryButton {
+        font-size: 14px;
+        padding: 8px 20px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .primaryButton {
+        padding: 6px 16px;
+    }
+    .navbarButton {
+        margin-left: 15px;
+    }
+}

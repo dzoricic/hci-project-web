@@ -1,7 +1,9 @@
 import  '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { createTheme, NextUIProvider } from '@nextui-org/react'
-import SnackbarProvider from 'react-simple-snackbar'
+import { UserContextProvider } from 'common/user-context/user-context-provider'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify'
 
 
 const theme = createTheme({
@@ -22,9 +24,10 @@ const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider theme={theme}>
-      <SnackbarProvider>
+      <UserContextProvider userId='63cd0b0562b0b718b56c7df0'>
         <Component {...pageProps}/>
-      </SnackbarProvider>
+        <ToastContainer/>
+      </UserContextProvider>
     </NextUIProvider>
   )
 }

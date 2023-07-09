@@ -2,18 +2,13 @@ import { Grid, Text, Input, Button } from "@nextui-org/react";
 import styles from "styles/home-page.module.scss";
 import { useRouter } from "next/router";
 import { left_arrow } from "icons";
-import { useSnackbar } from "react-simple-snackbar";
 
 const FakeCheckout = () => {
     const router = useRouter();
-    const [openSuccessSnackbar] = useSnackbar({
-        style: {
-            backgroundColor: "green"
-        }
-    });
+    // snackbar
 
     const onBuy = () => {
-        openSuccessSnackbar("Thank your for your purchase!");
+        // openSuccessSnackbar("Thank your for your purchase!");
         router.push("/home");
     }
 

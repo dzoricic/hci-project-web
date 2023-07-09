@@ -1,90 +1,104 @@
-import { Navbar, Button, Dropdown } from "@nextui-org/react";
 import { useRouter } from "next/router";
 
-import styles from "styles/header.module.scss";
+import styles from "./header.module.scss";
+import dropdownStyles from "./dropdown.module.scss";
 import { User } from "typings";
 import { headerItems } from "utils";
 
 import { default_picture, moon_logo } from "icons";
-import React from "react";
-import { userData } from "fake-data";
-import { useSnackbar } from "react-simple-snackbar";
+import React, { useState } from "react";
+import { NavbarButton } from "components/button/navbar-button";
+import { SecondaryButton } from "components/button/secondary-button";
+import { useUserContext } from "common/user-context/use-user-context";
 
 interface Props {
     user?: User;
 }
 
 const Header = (props: Props) => {
-    const [user, setUser] = React.useState<User>();
+    const { user, logout } = useUserContext();
     const router = useRouter();
-    const [openSuccessSnackbar] = useSnackbar({
-        style: {
-            backgroundColor: "green"
-        }
-    });
 
-    React.useEffect(function onMount() {
-        const userId = localStorage.getItem('user_id');
-        if (userId) {
-            setUser(userData.find((usr) => usr.id === userId));
-        }
-    }, [])
+    const [openUserMenu, setOpenUserMenu] = useState<boolean>(false);
+    const [openMobileMenu, setOpenMobileMenu] = useState<boolean>(false);
 
-    const resolveNavbarLinks = () => {
+    const renderUserDropdown = (profile_picture: string, userId: string): JSX.Element => (
+        <div
+            className={dropdownStyles.dropdown}
+            onMouseEnter={() => setOpenUserMenu(true)}
+            onMouseLeave={() => setOpenUserMenu(false)}
+        >
+            <img src={profile_picture} className={styles.profile_picture}/>
+            {openUserMenu && (
+                <div className={dropdownStyles.dropdownMenuRight}>
+                    <ul>
+                        <li onClick={() => router.push(`/user-profile/${userId}`)}>Profile</li>
+                        <li onClick={logout}>Log out</li>
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+
+    const renderMobileMenuDropdown = (): JSX.Element => (
+        <div
+            className={dropdownStyles.dropdown}
+            onClick={() => setOpenMobileMenu((value => !value))}
+            onMouseLeave={() => setOpenMobileMenu(false)}
+        >
+            <img src="static/icons/menu.png" width="30px"/>
+            {openMobileMenu && (
+                <div className={dropdownStyles.dropdownMenuLeft}>
+                    <ul>
+                        {resolveMobileNavbarLinks()}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+
+    const renderNavbarUser = (): JSX.Element | undefined => {
+        if (!user) {
+            return;
+        }
+        const profile_picture = user?.imageUrl ?? default_picture.src;
+        return renderUserDropdown(profile_picture, user.id);
+    }
+
+    const renderLoginButton = (): JSX.Element | undefined => {
+        if (user) {
+            return;
+        }
+        return <SecondaryButton text="Log in" onClick={() => router.push("/login")}/>
+    }
+
+    const resolveNavbarLinks = (): JSX.Element[] => {
         return headerItems.map((item) => {
             const isActive = router.pathname.includes(item.url);
-            return <Navbar.Link isActive={isActive} onClick={() => router.push(item.url)}>{item.label}</Navbar.Link>
+            return <NavbarButton isActive={isActive} onClick={() => router.push(item.url)} text={item.label}/>
         })
     }
 
-    const onLogout = () => {
-        router.push('/home');
-        localStorage.removeItem('user_id');
-        setUser(undefined);
-        openSuccessSnackbar("Successfully logged out!");
-    }
-
-    const resolveNavbarLogin = () => {
-        if (user) {
-            const profile_picture = user.imageUrl ?? default_picture.src;
-            return (
-                <>
-                    <Navbar.Item>
-                        <Button auto flat onClick={() => router.push("/events")} className={styles.reservation_button} css={{color: "White", backgroundColor: '$primary', borderRadius: '0.5em'}}>
-                            Make a reservation
-                        </Button>
-                    </Navbar.Item>
-                    <Navbar.Item>
-                        <img src={profile_picture} className={styles.profile_picture} onClick={() => router.push(`/user-profile/${user.id}`)}/>
-                    </Navbar.Item>
-                    <Navbar.Item>
-                        <Button auto light css={{ padding: 0 }} onClick={onLogout}>Log out</Button>
-                    </Navbar.Item>
-                </>
-            )
-        }
-
-        return (
-            <Navbar.Item>
-                <Button auto flat onClick={() => router.push("/login")} className={styles.login_button} css={{color: "Black", backgroundColor: '$secondary', borderRadius: '0.5em'}}>
-                    Log in
-                </Button>
-            </Navbar.Item>
-        )
+    const resolveMobileNavbarLinks = (): JSX.Element[] => {
+        return headerItems.map((item) => {
+            return <li onClick={() => router.push(item.url)}>{item.label}</li>
+        })
     }
 
     return (
-        <Navbar variant="sticky" className={styles.background}>
-            <Navbar.Brand>
-                <img src={moon_logo.src} width="100px" onClick={() => router.push("/home")} style={{cursor: "pointer"}}/>
-            </Navbar.Brand>
-            <Navbar.Content activeColor={"primary"} hideIn="xs" variant={"underline"}>
-                {resolveNavbarLinks()}
-            </Navbar.Content>
-            <Navbar.Content>
-                {resolveNavbarLogin()}
-            </Navbar.Content>
-        </Navbar>
+        <div className={styles.navbar}>
+            <div className={styles.mobilePages}>
+                { renderMobileMenuDropdown() }
+            </div>
+    	    <img src={moon_logo.src} className={styles.headerLogo} onClick={() => router.push("/home")}/>
+            <div className={styles.pages}>
+                { resolveNavbarLinks() }
+            </div>
+            <div className={styles.userContainer}>
+                { renderLoginButton() }
+                { renderNavbarUser() }
+            </div>
+        </div>
     )
 }
 

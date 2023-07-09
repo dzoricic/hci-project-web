@@ -12,39 +12,27 @@ const Footer = () => {
         return items.map((item) => <FooterItemContainer imageSource={item.imageSource} text={item.text} />)
     }
 
-    const renderFooterHeader = () => {
-        return (
-            <Grid.Container xs={3} justify="center" css={{ padding: "3em" }}>
-                <img src={moon_logo.src}/>
-            </Grid.Container>
-        )
-    }
-
     const renderFooterContent = () => {
         const length = footerItems.length;
         const columnCount = Math.round(length / 2);
 
         return (
-            <Grid.Container xs={6} gap={3} direction="row" justify="center" alignItems="center" css={{padding: 0, margin: 0}}>
-                <Grid direction="column" alignItems="center" md={6} lg={4}>
-                    <Grid>
-                        {renderFooterItems(footerItems.slice(0, columnCount))}
-                    </Grid>
-                </Grid>
-                <Grid direction="column" alignItems="center" md={6} lg={4}>
-                    <Grid>
-                        {renderFooterItems(footerItems.slice(columnCount, length))}
-                    </Grid>
-                </Grid>
-            </Grid.Container>
+            <div className={styles.footer}>
+                <div className={styles.items}>
+                    { renderFooterItems(footerItems.slice(0, columnCount)) }
+                </div>
+                <div className={styles.items}>
+                    {renderFooterItems(footerItems.slice(columnCount, length))}
+                </div>
+            </div>
         )
     }
 
     return (
-        <Grid.Container className={styles.background} direction="row">
-            {renderFooterHeader()}
+        <div className={styles.background}>
+            <img className={styles.logo} src={moon_logo.src}/>
             {renderFooterContent()}
-        </Grid.Container>
+        </div>
     )
 }
 

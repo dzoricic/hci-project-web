@@ -18,7 +18,7 @@ export interface DefaultContainerItem {
     navigationLink?: string;
 }
 
-export interface HomeTitle {
+export interface HomeTitleProps {
     title: string;
     text: string;
 }

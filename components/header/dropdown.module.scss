@@ -1,0 +1,62 @@
+@import "../../styles/colors.module.scss";
+
+.dropdown {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100px;
+  }
+  
+  .dropdownMenuRight {
+    position: absolute;
+    top: 100%;
+    right: -20px;
+
+    background-color: $background;
+    min-width: 120px;
+  }
+  
+  .dropdownMenuRight ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdownMenuRight li {
+    display: flex;
+    align-items: center;
+
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .dropdownMenuRight li:hover {
+    background-color: $background_secondary;
+  }
+  
+  .dropdownMenuLeft {
+    position: absolute;
+    top: 100%;
+    left: -20px;
+
+    background-color: $background;
+    min-width: 120px;
+  }
+  
+  .dropdownMenuLeft ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .dropdownMenuLeft li {
+    display: flex;
+    align-items: center;
+
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .dropdownMenuLeft li:hover {
+    background-color: $background_secondary;
+  }

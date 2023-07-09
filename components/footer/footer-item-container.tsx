@@ -9,10 +9,10 @@ const FooterItemContainer = ({imageSource, text}: FooterItem) => {
     }
 
     return (
-        <Grid.Container gap={2} direction="row" alignItems="center">
+        <div className={styles.footerItem}>
             <img className={styles.icon} src={imageSource} height='20px' width='20px'/>
-            <Text className='footer-item__text'>{text}</Text>
-        </Grid.Container>
+            <span className={styles.iconText}>{text}</span>
+        </div>
     )
 }
 

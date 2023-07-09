@@ -1,0 +1,107 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 200px;
+    min-height: 70px;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+}
+
+.mobilePages {
+    display: flex;
+    align-items: center;
+
+    display: none;
+    width: 3em;
+}
+
+.headerLogo {
+    cursor: pointer;
+    width: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.profile_picture {
+    margin-left: 50px;
+    border-radius: 50px;
+    width: 3em;
+}
+
+@keyframes opacityHover {
+  from {opacity: 1;}
+  to {opacity: 0.7;}
+}
+
+.profile_picture:hover {
+    cursor: pointer;
+    animation-name: opacityHover;
+    animation-fill-mode: forwards;  
+    animation-duration: 0.3s;
+}
+
+.navbarUser {
+    display: flex;
+}
+
+@media screen and (max-width: 1500px) {
+    .navbar {
+        padding: 0 60px;
+        justify-content: space-between;
+    }
+    .headerLogo {
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .navbar {
+        padding: 0 40px;
+        justify-content: space-between;
+    }
+    .headerLogo {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+    .headerLogo {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .pages {
+        display: none;
+    }
+    .mobilePages {
+        display: inline;
+        width: 100px;
+    }
+    .navbar {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+    .headerLogo {
+        width: 100px;
+        margin: 0;
+    }
+}

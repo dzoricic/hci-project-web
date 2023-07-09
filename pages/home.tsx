@@ -2,7 +2,7 @@ import { HomeTitle, ImageWithContent, PageWrapper } from "components";
 
 import { homeItems, homeTitle, titlePictureData } from "utils";
 
-import TitlePicture from "components/title-picture";
+import TitlePicture from "components/title/title-picture";
 import { Page } from "enums";
 
 const Home = () => {
@@ -11,13 +11,13 @@ const Home = () => {
             const isImageOnLeft = index % 2 === 0;
             return <ImageWithContent homeItem={item} isImageOnLeft={isImageOnLeft}/>
         })
-    } 
+    }
 
     return (
         <PageWrapper>
             <main>
-                <TitlePicture isHomeTitle titlePicture={titlePictureData[Page.HOME]}/>
-                <HomeTitle homeTitle={homeTitle}/>
+                <TitlePicture picture={titlePictureData[Page.HOME]}/>
+                <HomeTitle homeTitleProps={homeTitle}/>
                 { renderHomeItems() }
             </main>
         </PageWrapper>

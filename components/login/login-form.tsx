@@ -3,8 +3,8 @@ import { userData } from "fake-data";
 import { facebook, google } from "icons";
 import { useRouter } from "next/router";
 import React from "react";
-import { useSnackbar } from "react-simple-snackbar";
 import styles from "styles/home-page.module.scss";
+import { toast } from "react-toastify/dist/core";
 
 interface Props {
     isLogin?: boolean;
@@ -17,16 +17,6 @@ const LoginForm = ({ isLogin }: Props) => {
     const [lastname, setLastname] = React.useState<string>();
 
     const router = useRouter();
-    const [openSuccessSnackbar] = useSnackbar({
-        style: {
-            backgroundColor: "green"
-        }
-    });
-    const [openErrorSnackbar] = useSnackbar({
-        style: {
-            backgroundColor: "red"
-        }
-    });
 
     React.useEffect(function onMount() {
         if (isLogin) {
@@ -64,11 +54,13 @@ const LoginForm = ({ isLogin }: Props) => {
         const user = userData.find((u) => u.userName === username);
         if (user) {
             localStorage.setItem('user_id', user.id);
-            openSuccessSnackbar("Successfully Logged In");
+            toast.success("Logged in!", {
+                position: toast.POSITION.BOTTOM_LEFT
+            });
             router.push('/home');
             return;
+        
         }
-        openErrorSnackbar("User does not exist");
     }
 
     const resolveEnterKey = (key: string) => {
