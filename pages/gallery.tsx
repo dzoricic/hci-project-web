@@ -46,7 +46,7 @@ const Gallery = () => {
     }
 
     const renderGalleryList = () => {
-        return galleryList.map((galleryItem) => <GalleryItem galleryItem={galleryItem} onClick={openModal}/>)
+        return galleryList.map((galleryItem) => <GalleryItem key={galleryItem.id} galleryItem={galleryItem} onClick={openModal}/>)
     }
 
     return (

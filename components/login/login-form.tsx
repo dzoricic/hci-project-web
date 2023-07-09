@@ -4,7 +4,7 @@ import { facebook, google } from "icons";
 import { useRouter } from "next/router";
 import React from "react";
 import styles from "styles/home-page.module.scss";
-import { toast } from "react-toastify/dist/core";
+import { toast } from "react-toastify";
 
 interface Props {
     isLogin?: boolean;

@@ -9,7 +9,7 @@ import { moon_logo } from "icons";
 
 const Footer = () => {
     const renderFooterItems = (items: FooterItem[]) => {
-        return items.map((item) => <FooterItemContainer imageSource={item.imageSource} text={item.text} />)
+        return items.map((item) => <FooterItemContainer key={item.text} imageSource={item.imageSource} text={item.text} />)
     }
 
     const renderFooterContent = () => {

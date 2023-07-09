@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import React from "react";
 import { EventData, User } from "typings";
 import styles from "styles/home-page.module.scss";
-import { toast } from "react-toastify/dist/core";
+import { toast } from "react-toastify";
 
 const UserProfile = () => {
     const router = useRouter();

@@ -12,7 +12,7 @@ import { Area, EventData, Table, User } from "typings";
 import styles from "styles/home-page.module.scss";
 import Summary from "components/reservations/summary";
 import { eventData } from "fake-data/event-data";
-import { toast } from "react-toastify/dist/core";
+import { toast } from "react-toastify";
 
 const Reservation = () => {
     const router = useRouter();
@@ -80,11 +80,11 @@ const Reservation = () => {
     }
     
     const getAllTables = () => {
-        return tableData.sort((a, b) => a.price > b.price ? 1 : -1).map((table) => <TableInfo table={table} onClick={handleTableClick}/>)
+        return tableData.sort((a, b) => a.price > b.price ? 1 : -1).map((table) => <TableInfo key={table.id} table={table} onClick={handleTableClick}/>)
     }
 
     const getAreaTables = (area: Area) => {
-        return area.tables.sort((a, b) => a.price > b.price ? 1 : -1).map((table) => <TableInfo table={table} onClick={handleTableClick}/> )
+        return area.tables.sort((a, b) => a.price > b.price ? 1 : -1).map((table) => <TableInfo key={table.id} table={table} onClick={handleTableClick}/> )
     }
 
     const renderAllTablesButton = () => {
@@ -127,7 +127,7 @@ const Reservation = () => {
     }
 
     const getTableAreas = () => {
-        return areaData.map((area) => <TableGroup area={area} onClick={handleTableAreaClick}/>)
+        return areaData.map((area) => <TableGroup key={area.id} area={area} onClick={handleTableAreaClick}/>)
     }
 
     const resolveTablePicker = () => {

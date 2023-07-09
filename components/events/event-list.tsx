@@ -48,7 +48,7 @@ const EventList = ({ events }: Props) => {
     }
 
     const renderEvents = (events: EventData[], isPastEvent?: boolean) => {
-        return events.map((event) => <EventContainer isPastEvent={isPastEvent} event={event} onClick={navigateToReservation} scrollBack={scrollToUpcomingEvents}/>)
+        return events.map((event) => <EventContainer key={event.id} isPastEvent={isPastEvent} event={event} onClick={navigateToReservation} scrollBack={scrollToUpcomingEvents}/>)
     }
 
     const resolveEvents = (isUpcomingEvent: boolean) => {

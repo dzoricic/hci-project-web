@@ -9,7 +9,7 @@ const Home = () => {
     const renderHomeItems = () => {
         return homeItems.map((item, index) => {
             const isImageOnLeft = index % 2 === 0;
-            return <ImageWithContent homeItem={item} isImageOnLeft={isImageOnLeft}/>
+            return <ImageWithContent key={index} homeItem={item} isImageOnLeft={isImageOnLeft}/>
         })
     }
 

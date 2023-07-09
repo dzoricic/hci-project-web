@@ -75,13 +75,13 @@ const Header = (props: Props) => {
     const resolveNavbarLinks = (): JSX.Element[] => {
         return headerItems.map((item) => {
             const isActive = router.pathname.includes(item.url);
-            return <NavbarButton isActive={isActive} onClick={() => router.push(item.url)} text={item.label}/>
+            return <NavbarButton key={ item.label } isActive={isActive} onClick={() => router.push(item.url)} text={item.label}/>
         })
     }
 
     const resolveMobileNavbarLinks = (): JSX.Element[] => {
         return headerItems.map((item) => {
-            return <li onClick={() => router.push(item.url)}>{item.label}</li>
+            return <li key={ item.label } onClick={() => router.push(item.url)}>{item.label}</li>
         })
     }
 
