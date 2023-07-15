@@ -1,0 +1,318 @@
+{
+    "categories": [
+      {
+        "id": "1a6a10e1-2358-40b7-aa79-eb1940e6a199",
+        "name": "Beers",
+        "imageSource": "https://www.prazdroj.cz/cospospohzeg/uploads/2021/08/Asset__4-1080x1080.png",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "IPA",
+            "price": "6.99",
+            "description": "An India Pale Ale with hoppy and citrusy flavors."
+          },
+          {
+            "id": 2,
+            "name": "Stout",
+            "price": "5.49",
+            "description": "A rich, dark beer with notes of chocolate and coffee."
+          },
+          {
+            "id": 3,
+            "name": "Wheat Beer",
+            "price": "5.99",
+            "description": "A light and refreshing beer with hints of citrus and coriander."
+          },
+          {
+            "id": 4,
+            "name": "Pale Ale",
+            "price": "6.49",
+            "description": "A balanced beer with a hoppy aroma and caramel malt flavors."
+          },
+          {
+            "id": 5,
+            "name": "Lager",
+            "price": "4.99",
+            "description": "A crisp and clean beer with a mild malt flavor."
+          },
+          {
+            "id": 6,
+            "name": "Amber Ale",
+            "price": "5.99",
+            "description": "An ale with a rich amber color and toasty malt notes."
+          },
+          {
+            "id": 7,
+            "name": "Pilsner",
+            "price": "5.49",
+            "description": "A light-bodied beer with a slightly bitter and hoppy taste."
+          },
+          {
+            "id": 8,
+            "name": "Saison",
+            "price": "6.99",
+            "description": "A farmhouse-style ale with fruity and spicy flavors."
+          }
+        ]
+      },{
+        "id": "441561b7-e50e-46c8-a5f3-45a089434ca8",
+        "name": "Whiskey",
+        "imageSource": "https://target.scene7.com/is/image/Target/GUEST_b4168105-4774-42d1-ab13-f70c38f4c0ad?wid=488&hei=488&fmt=pjpeg",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "Scotch Whisky",
+            "price": "9.99",
+            "description": "A traditional Scottish whisky with rich smoky and peaty flavors."
+          },
+          {
+            "id": 2,
+            "name": "Bourbon",
+            "price": "8.49",
+            "description": "An American whiskey with a sweet and full-bodied profile, often aged in charred oak barrels."
+          },
+          {
+            "id": 3,
+            "name": "Irish Whiskey",
+            "price": "7.99",
+            "description": "A smooth and light-bodied whiskey with notes of honey and vanilla."
+          },
+          {
+            "id": 4,
+            "name": "Rye Whiskey",
+            "price": "8.99",
+            "description": "A whiskey made primarily from rye grain, known for its spicy and robust flavor profile."
+          },
+          {
+            "id": 5,
+            "name": "Japanese Whisky",
+            "price": "10.49",
+            "description": "A whisky produced in Japan, often characterized by a balance of delicate and complex flavors."
+          },
+          {
+            "id": 6,
+            "name": "Single Malt Whisky",
+            "price": "11.99",
+            "description": "A whisky made from malted barley in a single distillery, showcasing the unique characteristics of that distillery's style."
+          }
+        ]
+      },{
+        "id": "8b589b9b-d468-4ba3-9649-f8054b611ceb",
+        "name": "Gin",
+        "imageSource": "https://www.lepidecki.com/wp-content/uploads/2021/07/102-gin-1024.webp",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "London Dry Gin",
+            "price": "7.99",
+            "description": "A classic and juniper-forward gin with a crisp and dry taste."
+          },
+          {
+            "id": 2,
+            "name": "Citrus Gin",
+            "price": "8.49",
+            "description": "A gin infused with bright citrus flavors, providing a refreshing and zesty profile."
+          },
+          {
+            "id": 3,
+            "name": "Herbal Gin",
+            "price": "8.99",
+            "description": "A gin infused with aromatic herbs and botanicals, creating a complex and herbaceous character."
+          },
+          {
+            "id": 4,
+            "name": "Sloe Gin",
+            "price": "9.49",
+            "description": "A gin flavored with sloe berries, offering a fruity and slightly sweet taste."
+          }
+        ]
+      },{
+        "id": "0f9e8f6f-749b-441f-a3e9-91c8b0c910fb",
+        "name": "Non-Alcoholic Drinks",
+        "imageSource": "https://www.ppkbjelovar.com/EasyEdit/UserFiles/Catalog/mineralna-voda-jamnica-15l-pvc-jamnica/mineralna-voda-jamnica-15l-pvc-jamnica-637566078649338472_708_708@2x.jpeg",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "Virgin Mojito",
+            "price": "4.99",
+            "description": "A refreshing blend of lime, mint, and soda water."
+          },
+          {
+            "id": 2,
+            "name": "Strawberry Lemonade",
+            "price": "3.99",
+            "description": "Tangy lemonade with a burst of sweet strawberries."
+          },
+          {
+            "id": 3,
+            "name": "Pina Colada",
+            "price": "5.49",
+            "description": "A tropical blend of pineapple, coconut cream, and ice."
+          },
+          {
+            "id": 4,
+            "name": "Mango Lassi",
+            "price": "4.49",
+            "description": "A creamy yogurt-based drink with fresh mango and a hint of cardamom."
+          },
+          {
+            "id": 5,
+            "name": "Iced Coffee",
+            "price": "3.99",
+            "description": "Chilled coffee with milk, sweetened to perfection."
+          },
+          {
+            "id": 6,
+            "name": "Sparkling Water",
+            "price": "2.49",
+            "description": "Bubbly and refreshing mineral water with a hint of natural flavor."
+          },
+          {
+            "id": 7,
+            "name": "Hibiscus Iced Tea",
+            "price": "3.49",
+            "description": "Iced tea infused with hibiscus petals, creating a vibrant and floral drink."
+          },
+          {
+            "id": 8,
+            "name": "Cucumber Mint Cooler",
+            "price": "4.99",
+            "description": "A cooling blend of cucumber, mint, and lime, perfect for hot summer days."
+          },
+          {
+            "id": 9,
+            "name": "Ginger Beer",
+            "price": "3.49",
+            "description": "A zesty and spicy non-alcoholic beverage with a kick of ginger."
+          },
+          {
+            "id": 10,
+            "name": "Watermelon Agua Fresca",
+            "price": "4.49",
+            "description": "A refreshing watermelon-based drink with a hint of lime and a touch of sweetness."
+          }
+        ]
+      },
+      {
+        "id": "1430c99c-ecca-4c47-ac4b-7c505f0f43bf",
+        "name": "Wines",
+        "imageSource": "https://www.winbirri.com/wp-content/uploads/2023/03/slider-bottle.webp",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "Cabernet Sauvignon",
+            "price": "12.99",
+            "description": "A full-bodied red wine with rich flavors of dark fruit and notes of oak."
+          },
+          {
+            "id": 2,
+            "name": "Chardonnay",
+            "price": "10.99",
+            "description": "A medium to full-bodied white wine with buttery flavors and hints of tropical fruit."
+          },
+          {
+            "id": 3,
+            "name": "Pinot Noir",
+            "price": "11.99",
+            "description": "A light to medium-bodied red wine with delicate flavors of red berries and earthy undertones."
+          },
+          {
+            "id": 4,
+            "name": "Sauvignon Blanc",
+            "price": "9.99",
+            "description": "A crisp and refreshing white wine with vibrant citrus and herbal notes."
+          },
+          {
+            "id": 5,
+            "name": "Merlot",
+            "price": "10.99",
+            "description": "A smooth and medium-bodied red wine with flavors of plum, cherry, and chocolate."
+          },
+          {
+            "id": 6,
+            "name": "Kairos",
+            "price": "14.99",
+            "description": "A boutique wine from Dalmatia, Croatia. Kairos showcases the character of the region, with a focus on indigenous grape varieties like Plavac Mali."
+          }
+        ]
+      },{
+        "id": "4329a12f-22d9-40b7-8946-3b3a08cdf8ab",
+        "name": "Cocktails",
+        "imageSource": "https://img.freepik.com/premium-photo/aperol-spritz-cocktail-pink-background-party-coctail-bar-drink-abstract-generative-ai-illustration_162695-7564.jpg?w=2000",
+        "drinks": [
+          {
+            "id": 1,
+            "name": "Margarita",
+            "price": "8.99",
+            "description": "A classic cocktail made with tequila, lime juice, and agave syrup."
+          },
+          {
+            "id": 2,
+            "name": "Old Fashioned",
+            "price": "9.99",
+            "description": "A timeless cocktail made with bourbon, sugar, and bitters."
+          },
+          {
+            "id": 3,
+            "name": "Cosmopolitan",
+            "price": "8.49",
+            "description": "A vodka-based cocktail with cranberry juice, orange liqueur, and a splash of lime."
+          },
+          {
+            "id": 4,
+            "name": "Mojito",
+            "price": "7.99",
+            "description": "A refreshing mix of rum, lime juice, sugar, mint leaves, and soda water."
+          },
+          {
+            "id": 5,
+            "name": "Negroni",
+            "price": "9.49",
+            "description": "A classic Italian cocktail made with gin, Campari, and sweet vermouth."
+          },
+          {
+            "id": 6,
+            "name": "Piña Colada",
+            "price": "8.99",
+            "description": "A tropical blend of rum, pineapple juice, coconut cream, and ice."
+          },
+          {
+            "id": 7,
+            "name": "Manhattan",
+            "price": "9.99",
+            "description": "A sophisticated cocktail made with whiskey, sweet vermouth, and bitters."
+          },
+          {
+            "id": 8,
+            "name": "Daiquiri",
+            "price": "7.99",
+            "description": "A refreshing blend of rum, lime juice, and sugar, served chilled."
+          },
+          {
+            "id": 9,
+            "name": "Screwdriver",
+            "price": "7.49",
+            "description": "A simple yet satisfying mix of vodka and orange juice."
+          },
+          {
+            "id": 10,
+            "name": "Gin and Tonic",
+            "price": "7.99",
+            "description": "A classic combination of gin, tonic water, and a squeeze of lime."
+          },
+          {
+            "id": 11,
+            "name": "Whiskey Sour",
+            "price": "8.49",
+            "description": "A bourbon-based cocktail with lemon juice and a touch of sweetness."
+          },
+          {
+            "id": 12,
+            "name": "Sangria",
+            "price": "8.99",
+            "description": "A fruity and refreshing mix of red wine, fruit juices, and sliced fruits."
+          }
+        ]
+      }
+    ]
+  }

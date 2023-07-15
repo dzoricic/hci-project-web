@@ -1,23 +1,56 @@
-import { Grid } from "@nextui-org/react";
-
 import { PageWrapper } from "components";
 import { Page } from "enums";
 import TitlePicture from "components/title/title-picture";
 
 import { titlePictureData } from "utils";
-import { offers } from "icons";
+import styles from "../styles/offers.module.scss";
+import data from "fake-data/drinks.json";
+import { DrinkResponse } from "typings";
+import EventContainer from "components/events/event-container";
+import { useRouter } from "next/router";
 
 const Offers = () => {
+    const router = useRouter();
+    const menu = data as DrinkResponse;
+
+    const handleClick = (categoryName?: string) => {
+        console.log("category Name: ", categoryName);
+        if (!categoryName) {
+            return;
+        }
+        router.push(`category/${categoryName}`);
+    }
+
     return (
         <PageWrapper>
             <main>
                 <TitlePicture picture={titlePictureData[Page.DRINK_OFFER]}/>
-                <Grid.Container direction="column" alignItems="center" css={{ padding: '5em' }}>
-                    <img src={offers.src}/>
-                </Grid.Container>
+                <div className={styles.main}>
+                    {renderAccordions(menu, handleClick)}
+                </div>
             </main>
         </PageWrapper>
     )
 }
 
 export default Offers;
+
+const renderAccordions = (menu?: DrinkResponse, onClick?: (categoryName?: string) => void): JSX.Element[] | JSX.Element | undefined => {
+    if (!menu) {
+        return;
+    }
+    if (!menu.categories.length) {
+        return <div>No data</div>
+    }
+    return menu.categories.map((category, index) => (
+        <EventContainer
+            pointer={true}
+            onClickWhole={() => onClick?.(category.id)}
+            event={{
+                id: index.toString(),
+                name: category.name,
+                imageSource: category.imageSource,
+            }}
+        />
+    ))
+}

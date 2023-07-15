@@ -1,0 +1,62 @@
+@import "../../styles/colors.module.scss";
+
+.main {
+    display: flex;
+    flex-direction: column;
+
+    padding: 100px 500px;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 50px;
+    padding: 20px;
+}
+
+.image {
+    width: 120px;
+    aspect-ratio: 1;
+    background-color: white;
+}
+
+.title {
+    font-size: xx-large;
+    color: white;
+}
+
+.drinkList {
+    display: flex;
+    flex-direction: column;
+}
+
+.drinkRow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    background-color: $background_secondary;
+
+    gap: 20px;
+    padding: 10px;
+    margin: 3px;
+
+    border-radius: 5px;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.descriptionTitle {
+    font-size: x-large;
+}
+
+.descriptionText {
+    font-size: large;
+    color: gray;
+}

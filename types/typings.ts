@@ -45,8 +45,8 @@ export interface User {
 export interface EventData {
     id: string;
     name: string;
-    date: string;
-    imageSource: string;
+    date?: string;
+    imageSource?: string;
 }
 
 export interface Area {
@@ -63,4 +63,22 @@ export interface Table {
     id: string;
     name: string;
     price: number;
+}
+
+export interface Drink {
+    id: number;
+    name: string;
+    price: string;
+    description: string;
+}
+
+export interface Category {
+    id: string;
+    name: string;
+    drinks: Drink[];
+    imageSource: string;
+}
+
+export interface DrinkResponse {
+    categories: Category[];
 }

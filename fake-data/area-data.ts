@@ -129,17 +129,7 @@ export const areaData: Area[] = [
                 id: "63cd1411b9f5b4452227e4eb",
                 name: "VA2",
                 price: 400
-            }
-        ]
-    },
-    {
-        id: "63cd0f5e9cd1fa15756c96bb",
-        type: TableArea.VIP,
-        minimumPrice: 400,
-        minimumGuests: 5,
-        arrivalTime: "23:00",
-        entrancePass: EntrancePass.VIP_PLUS,
-        tables: [
+            },
             {
                 id: "63cd14116a5a4368a7a345ef",
                 name: "VA3",
@@ -151,5 +141,5 @@ export const areaData: Area[] = [
                 price: 500
             }
         ]
-    }
+    },
 ]

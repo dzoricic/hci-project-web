@@ -1,0 +1,240 @@
+@import '../../styles/colors.module.scss';
+
+.main {
+    display: flex;
+    justify-content: center;
+
+    padding: 0 200px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 30px;
+
+    height: 80px;
+}
+
+.balance {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.reservationText {
+    font-size: xx-large;
+
+    width: 40%;
+
+    text-align: center;
+}
+
+.tablesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+.imageContainer {
+    width: 55%;
+
+    margin-bottom: 100px;
+}
+
+.table {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 565px;
+    width: 40%;
+}
+
+.tabs {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    width: 24.99%;
+    height: 50px;
+
+    &:hover {
+        background-color: black;
+    }
+}
+
+.description {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 50px;
+    
+    background-color: $background_secondary;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.descriptionText {
+    font-size: small;
+    color: gray;
+}
+
+.descriptionTitle {
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 30px;
+
+    width: 200px;
+}
+
+.areaLogo {
+    height: 40px;
+    aspect-ratio: 1;
+}
+
+.rowContainer {
+    display: flex;
+    flex-direction: column;
+
+    overflow-y: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 10px 30px;
+    background-color: $background;
+
+    cursor: pointer;
+
+    &:nth-child(even) {
+        background-color: black;
+    }
+
+    &:hover {
+        background-color: $background_secondary;
+    }
+}
+
+.sortHolder {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    padding: 10px 30px;
+    background-color: $background_secondary;
+}
+
+.sortButton {
+    cursor: pointer;
+
+    padding: 5px 10px;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $background;
+    }
+}
+
+.sortLabel {
+    margin-right: 30px;
+}
+
+@media screen and (max-width: 1500px) {
+    .main {
+        padding: 70px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .main {
+        padding: 20px;
+    }
+    .description {
+        padding: 10px;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        padding: 100px;
+    }
+    .tablesContainer {
+        flex-direction: column-reverse;
+        margin-bottom: 50px;
+    }
+    .table {
+        width: 100%;
+    }
+    .imageContainer {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .reservationText {
+        width: 50%;
+    }
+    .header {
+        padding: 0 10px;
+        height: 80px;
+    }
+    .balance {
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+    }
+    .description {
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main {
+        padding: 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 0
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .areaLogo {
+        display: none;
+    }
+    .priceContainer {
+        width: 100px;
+    }
+}

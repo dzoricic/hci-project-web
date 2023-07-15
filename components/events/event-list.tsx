@@ -56,15 +56,15 @@ const EventList = ({ events }: Props) => {
             .filter((event) => {
                 try {
                     return isUpcomingEvent
-                        ? Date.parse(event.date) > Date.now()
-                        : Date.parse(event.date) < Date.now();
+                        ? Date.parse(event.date ?? Date.now().toString()) > Date.now()
+                        : Date.parse(event.date ?? Date.now().toString()) < Date.now();
                 } catch {
                     return !isUpcomingEvent;
                 }
             })
             .sort((previousEvent, currentEvent) => {
                 try {
-                    return Date.parse(previousEvent.date) < Date.parse(currentEvent.date) ? 1 : -1
+                    return Date.parse(previousEvent.date ?? Date.now().toString()) < Date.parse(currentEvent.date ?? Date.now().toString()) ? 1 : -1
                 } catch {
                     return -1;
                 }

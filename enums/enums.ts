@@ -1,13 +1,14 @@
 export enum TableArea {
-    STAGE,
-    VIP,
-    BAR,
+    STAGE = "Stage",
+    VIP = "Vip",
+    BAR = "Bar",
+    ALL = "All"
 }
 
 export enum EntrancePass {
-    REGULAR,
-    VIP,
-    VIP_PLUS
+    REGULAR = "Regular",
+    VIP = "VIP",
+    VIP_PLUS = "VIP+"
 }
 
 export enum Page {

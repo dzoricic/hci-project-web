@@ -10,6 +10,8 @@
     height: 45px;
     width: fit-content;
 
+    cursor: pointer;
+
     color: white;
     background-color: $primary;
     &:hover {
@@ -25,6 +27,8 @@
     border-radius: 5px;
     padding: 10px 25px;
     width: fit-content;
+
+    cursor: pointer;
 
     color: black;
     background-color: $secondary;
