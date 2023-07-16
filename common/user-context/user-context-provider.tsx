@@ -19,8 +19,14 @@ export const UserContextProvider = ({ children }: PropsWithChildren) => {
         }
     }, []);
 
-    const loginUser = (username?: string | null, password?: string | null) => {
-        const user: User | undefined = userData.find((u) => u.userName === username);
+    const loginUser = (email?: string | null, password?: string | null) => {
+        if (!email || email === "") {
+            toast.error("Please enter your email!", {
+                position: toast.POSITION.BOTTOM_LEFT
+            });
+            return;
+        }
+        const user: User | undefined = userData.find((u) => u.email === email);
         if (!user) {
             toast.error("User not found!", {
                 position: toast.POSITION.BOTTOM_LEFT

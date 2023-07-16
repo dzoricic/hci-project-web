@@ -43,11 +43,11 @@ const UserProfile = () => {
     }
 
     React.useEffect(onMount, []);
-    React.useEffect(onMount, [router])
+    // React.useEffect(onMount, [router])
 
     React.useEffect(function didUpdate() {
         validateChangeButton();
-    }, [JSON.stringify(user), JSON.stringify(myUser), username, password, name, lastname, email, phone])
+    }, [username, password, name, lastname, email, phone])
 
     const listEvents = () => {
         if (!user?.events?.length) {
@@ -97,12 +97,12 @@ const UserProfile = () => {
         }
         const newUser: User = {
             id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            userName: user.userName,
-            email: user.email,
+            firstName: name ?? user.firstName,
+            lastName: lastname ?? user.lastName,
+            userName: username ?? user.userName,
+            email: email ?? user.email,
             events: user.events,
-            phone: user.phone,
+            phone: phone ?? user.phone,
             totalSpent: user.totalSpent,
             totalVisits: user.totalVisits,
             balance: user.balance,
@@ -152,6 +152,7 @@ const UserProfile = () => {
                     <div className={styles.profileDataRow}>
                         <Input
                             labelRight="Phone"
+                            type={!user?.phone ? "number" : undefined}
                             value={phone ?? undefined}
                             fullWidth
                             onChange={(event) => setPhone(event.target.value)}
@@ -252,7 +253,7 @@ const UserProfile = () => {
                     </div>
                     <div className={styles.balance}>
                         <span className={styles.totalKey}>Balance</span>
-                        <span className={styles.totalValue}>${ user?.balance }.00</span>
+                        <span className={styles.totalValue}>${ user?.balance }</span>
                     </div>
                 </div>
                 <div className={styles.content}>

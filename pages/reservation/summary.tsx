@@ -53,7 +53,7 @@ export const Summary = ({ table }: Props) => {
                 <div className={styles.paymentSummary}>
                     <div className={styles.row}>
                         <span className={styles.paymentTotal}>Balance</span>
-                        <span className={styles.paymentTotal}>${user?.balance}.00</span>
+                        <span className={styles.paymentTotal}>${user?.balance}</span>
                     </div>
                     <hr/>
                     <div className={styles.paymentDetails}>

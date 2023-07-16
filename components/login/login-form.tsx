@@ -20,6 +20,12 @@ const LoginForm = ({ isLogin }: Props) => {
     const [name, setName] = React.useState<string>();
     const [lastname, setLastname] = React.useState<string>();
 
+    const [emailHelper, setEmailHelper] = React.useState<boolean>(false);
+    const [passwordHelper1, setPasswordHelper1] = React.useState<boolean>(false);
+    const [passwordHelper2, setPasswordHelper2] = React.useState<boolean>(false);
+    const [nameHelper, setNameHelper] = React.useState<boolean>(false);
+    const [lastNameHelper, setLastNameHelper] = React.useState<boolean>(false);
+
     const { login, register } = useUserContext();
 
     const router = useRouter();
@@ -50,6 +56,26 @@ const LoginForm = ({ isLogin }: Props) => {
         setLastname(value);
     }
 
+    const enableHelperMessages = () => {
+        if (!email || email === '') {
+            setEmailHelper(true);
+        } else setEmailHelper(false);
+        if (!password || password === '') {
+            setPasswordHelper1(true);
+        } else setPasswordHelper1(false);
+        if (password && password.length < 6) {
+            setPasswordHelper2(true)
+        } else setPasswordHelper2(false);
+        if (!isLogin) {
+            if (!name || name === '') {
+                setNameHelper(true);
+            } else setNameHelper(false);
+            if (!lastname || lastname === '') {
+                setLastNameHelper(true);
+            } else setLastNameHelper(false);
+        }
+    }
+
     const onRegister = () => {
         if (isLogin) {
             localStorage.setItem('username', email ?? '');
@@ -58,10 +84,12 @@ const LoginForm = ({ isLogin }: Props) => {
             return;
         }
         register(name, lastname, email, password);
+        enableHelperMessages();
     }
 
     const onLogin = () => {
         login(email, password);
+        enableHelperMessages();
     }
 
     const resolveEnterKey = (key: string) => {
@@ -86,17 +114,21 @@ const LoginForm = ({ isLogin }: Props) => {
                     labelPlaceholder="Name"
                     value={name}
                     fullWidth
-                    css={{ marginBottom: "2em" }}
+                    css={{ marginBottom: "3em" }}
                     onChange={(event) => handleName(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
+                    helperText= {nameHelper ? "Please provide a name" : undefined}
+                    helperColor="warning"
                 />
                 <Input
                     labelPlaceholder="Lastname"
                     value={lastname}
                     fullWidth
-                    css={{ marginBottom: "2em" }}
+                    css={{ marginBottom: "3em" }}
                     onChange={(event) => handleLastname(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
+                    helperText= {lastNameHelper ? "Please provide a last name" : undefined}
+                    helperColor="warning"
                 />
             </>
         )
@@ -110,18 +142,22 @@ const LoginForm = ({ isLogin }: Props) => {
                     labelPlaceholder="Email"
                     value={email ?? undefined}
                     fullWidth
-                    css={{ marginBottom: "2em" }}
+                    css={{ marginBottom: "3em" }}
                     onChange={(event) => handleEmail(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
+                    helperText= {emailHelper ? "Please provide an email" : undefined}
+                    helperColor="warning"
                 />
                 <Input
                     type="password"
                     labelPlaceholder="Password"
                     value={password ?? undefined}
                     fullWidth
-                    css={{ marginBottom: "2em" }}
+                    css={{ marginBottom: "3em" }}
                     onChange={(event) => handlePassword(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
+                    helperText= {passwordHelper1 ? "Please provide a password" : (passwordHelper2 ? "Must contain at least 6 characters" : undefined)}
+                    helperColor="warning"
                 />
                 <div className={styles.actions}>
                     { resolveLoginButton() }

@@ -74,7 +74,7 @@ const Reservation = () => {
             <span className={styles.reservationText}>Reservations</span>
             <div className={styles.balance}>
                 <span className={styles.descriptionTitle}>Balance</span>
-                <span>${user?.balance ?? "0"}.00</span>
+                <span>${user?.balance ?? "0"}</span>
             </div>
         </div>
     )
