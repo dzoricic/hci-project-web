@@ -5,6 +5,7 @@ import { NO_IMAGE_URL } from "utils";
 import styles from "styles/gallery.module.scss";
 
 import { left_arrow, right_arrow } from "icons";
+import Image from "next/image";
 
 interface Props {
     isOpen: boolean;
@@ -32,9 +33,9 @@ const GalleryModal = ({ isOpen, onClick, onSwitchImage, galleryItem }: Props) =>
         >
             <Modal.Body>
                 <Grid.Container direction="row" justify="space-between" alignItems="center">
-                        <img src={left_arrow.src} className={styles.modalPhoto} onClick={() => onSwitchImage(true)}/>
-                        <img src={resolveImageSource()} width="700px"/>
-                        <img src={right_arrow.src} className={styles.modalPhoto} onClick={() => onSwitchImage(false)}/>
+                        <Image alt="Left arrow" src={left_arrow} className={styles.modalPhoto} onClick={() => onSwitchImage(true)} width="20" height="20"/>
+                        <img alt="Gallery photo" src={resolveImageSource()} width="700px"/> 
+                        <Image alt="Right arrow" src={right_arrow} className={styles.modalPhoto} onClick={() => onSwitchImage(false)} width="20" height="20"/>
                 </Grid.Container>
             </Modal.Body>
         </Modal>

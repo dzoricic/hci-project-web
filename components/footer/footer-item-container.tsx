@@ -1,7 +1,6 @@
-import { Grid, Text } from "@nextui-org/react";
-
 import { FooterItem } from "typings";
 import styles from "styles/footer.module.scss";
+import Image from "next/image";
 
 const FooterItemContainer = ({imageSource, text}: FooterItem) => {
     if (!imageSource || !text) {
@@ -10,7 +9,7 @@ const FooterItemContainer = ({imageSource, text}: FooterItem) => {
 
     return (
         <div className={styles.footerItem}>
-            <img className={styles.icon} src={imageSource} height='20px' width='20px'/>
+            <img alt="Media icon" className={styles.icon} src={imageSource}/>
             <span className={styles.iconText}>{text}</span>
         </div>
     )

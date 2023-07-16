@@ -10,6 +10,8 @@ import React, { useState } from "react";
 import { NavbarButton } from "components/button/navbar-button";
 import { SecondaryButton } from "components/button/secondary-button";
 import { useUserContext } from "common/user-context/use-user-context";
+import Image from "next/image";
+import menu from "../../public/static/icons/menu.png";
 
 interface Props {
     user?: User;
@@ -28,7 +30,7 @@ const Header = (props: Props) => {
             onMouseEnter={() => setOpenUserMenu(true)}
             onMouseLeave={() => setOpenUserMenu(false)}
         >
-            <img src={profile_picture} className={styles.profile_picture}/>
+            <img alt="Profile picture" src={profile_picture} className={styles.profile_picture}/>
             {openUserMenu && (
                 <div className={dropdownStyles.dropdownMenuRight}>
                     <ul>
@@ -46,7 +48,9 @@ const Header = (props: Props) => {
             onClick={() => setOpenMobileMenu((value => !value))}
             onMouseLeave={() => setOpenMobileMenu(false)}
         >
-            <img src="static/icons/menu.png" width="30px"/>
+            <div className={styles.hamburgerBar}>
+                <Image alt="Menu icon" src={menu} height="30" width="30"/>
+            </div>
             {openMobileMenu && (
                 <div className={dropdownStyles.dropdownMenuLeft}>
                     <ul>
@@ -102,7 +106,9 @@ const Header = (props: Props) => {
             <div className={styles.mobilePages}>
                 { renderMobileMenuDropdown() }
             </div>
-    	    <img src={moon_logo.src} className={styles.headerLogo} onClick={() => router.push("/home")}/>
+            <div className={styles.headerLogo}>
+    	        <Image alt="Header logo" src={moon_logo} onClick={() => router.push("/home")} width="100"/>
+            </div>
             <div className={styles.pages}>
                 { resolveNavbarLinks() }
             </div>

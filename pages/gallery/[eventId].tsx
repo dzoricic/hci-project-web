@@ -20,12 +20,6 @@ const Photos = () => {
 
     const event = eventData.find((e) => e.id === eventId);
     const eventPhotoPair: Gallery[] = gallery.filter((pair) => pair.eventId === eventId);
-    if (!eventPhotoPair || !event) {
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "50px" }}>
-            <BackButton text="Back to gallery" onClick={() => router.push("/gallery")}/>
-            <span style={{ fontSize: "x-large", color: "white", textAlign: "center" }}>This event gallery photos contain sensitive content<br/>and potential nationalist symbols.</span>
-        </div>
-    }
     const eventPhotos: GalleryImage[] = galleryList?.filter((item) => eventPhotoPair?.find((photo) => photo.pictureId === item.id));
 
     const openModal = (imageId: string) => {
@@ -61,6 +55,11 @@ const Photos = () => {
     }
 
     const renderGalleryList = () => {
+        if (!eventPhotoPair?.length || !event) {
+            return <div style={{ display: "flex", flexDirection: "column", alignItems: "center", width: "100%" }}>
+                <span style={{ fontSize: "x-large", color: "white", textAlign: "center" }}>This event gallery photos contain sensitive content<br/>and potential nationalist symbols.</span>
+            </div>
+        }
         return eventPhotos.map((galleryItem) => <GalleryItem key={galleryItem.id} galleryItem={galleryItem} onClick={openModal}/>)
     }
 

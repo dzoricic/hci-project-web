@@ -1,6 +1,7 @@
 import { EventData } from "typings";
 import styles from "./events.module.scss";
 import { PrimaryButton } from "components/button/primary-button";
+import Image from "next/image";
 
 interface Props {
     event: EventData;
@@ -28,10 +29,13 @@ const EventContainer = ({ event, onClick, onClickWhole, scrollBack, isPastEvent,
     return (
         <div className={styles.eventBackground} style={ pointer ? { cursor: "pointer" } : undefined }>
             <div className={styles.eventContainer} onClick={() => onClickWhole?.()}>
-                <img
-                    className={styles.image}
-                    src={event.imageSource}    
-                />
+                {event.imageSource ? (
+                    <img
+                        alt="Event photo"
+                        className={styles.image}
+                        src={event.imageSource}    
+                    />
+                ) : <div className={styles.image}> Loading... </div>}
                 <span className={styles.title}>{event.name}</span>
                 {(formatedDate || description) && <span className={styles.subtitle}>{formatedDate ?? description}</span>}
                 {onClick && <div className={styles.buttonContainer}><PrimaryButton text={buttonText} onClick={handleClick}/></div>}

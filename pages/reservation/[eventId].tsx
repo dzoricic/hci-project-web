@@ -162,7 +162,7 @@ const Reservation = () => {
                 </div>
             </div>
             <div className={styles.imageContainer}>
-                <img src={floor_plan.src}/>
+                <img alt="Floor plan" src={floor_plan.src}/>
             </div>
         </div>
     )

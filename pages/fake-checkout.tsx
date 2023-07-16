@@ -2,6 +2,7 @@ import { Grid, Text, Input, Button } from "@nextui-org/react";
 import styles from "styles/home-page.module.scss";
 import { useRouter } from "next/router";
 import { left_arrow } from "icons";
+import Image from "next/image";
 
 const FakeCheckout = () => {
     const router = useRouter();
@@ -18,7 +19,7 @@ const FakeCheckout = () => {
                 <Grid.Container justify="space-between" alignItems="center" css={{ marginBottom: "2em" }}>
                     <Text h1 css={{ margin: 0, padding: 0 }}>Checkout</Text>
                     <Grid.Container xs={2} justify="flex-end" alignItems="center" onClick={() => router.back()} css={{ cursor: "pointer" }}>
-                        <img src={left_arrow.src} width="10px" height="15px" style={{ marginRight: "1em" }}/>
+                        <Image alt="Left arrow icon" src={left_arrow} width="10" height="15" style={{ marginRight: "1em" }}/>
                         <Text h4 css={{ padding: 0, margin: 0 }}>Back</Text>
                     </Grid.Container>
                 </Grid.Container>

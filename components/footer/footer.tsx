@@ -6,6 +6,7 @@ import styles from "styles/footer.module.scss";
 import { footerItems } from "utils";
 
 import { moon_logo } from "icons";
+import Image from "next/image";
 
 const Footer = () => {
     const renderFooterItems = (items: FooterItem[]) => {
@@ -30,7 +31,7 @@ const Footer = () => {
 
     return (
         <div className={styles.background}>
-            <img className={styles.logo} src={moon_logo.src}/>
+            <Image alt="Moon bar logo" className={styles.logo} src={moon_logo} width="200"/>
             {renderFooterContent()}
         </div>
     )

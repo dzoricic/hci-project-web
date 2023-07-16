@@ -14,7 +14,6 @@ const Offers = () => {
     const menu = data as DrinkResponse;
 
     const handleClick = (categoryName?: string) => {
-        console.log("category Name: ", categoryName);
         if (!categoryName) {
             return;
         }

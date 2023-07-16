@@ -7,12 +7,14 @@ import { vector2 } from "icons";
 import { mapAreaToImage } from "./[eventId]";
 import { useRouter } from "next/router";
 import { useUserContext } from "common/user-context/use-user-context";
+import Image from "next/image";
 
 interface Props {
     table?: Table;
 }
 
 export const Summary = ({ table }: Props) => {
+    const router = useRouter();
     const { user } = useUserContext();
     const area: Area | undefined = useMemo(() => findAreaByTable(table), [table]);
 
@@ -25,7 +27,8 @@ export const Summary = ({ table }: Props) => {
     }
 
     const redirectToPayment = () => {
-        window.open("https://astounding-fudge-3b161b.netlify.app/", "_blank", "noreferrer");
+        router.push("/fake-checkout");
+        // window.open("https://astounding-fudge-3b161b.netlify.app/", "_blank", "noreferrer");
     };
 
     return (
@@ -45,7 +48,7 @@ export const Summary = ({ table }: Props) => {
                     </div>
                 </div>
                 <div className={styles.divider}>
-                    <img className={styles.arrowImage} src={vector2.src}/>
+                    <Image alt="Arrow right" className={styles.arrowImage} src={vector2} width="60"/>
                 </div>
                 <div className={styles.paymentSummary}>
                     <div className={styles.row}>

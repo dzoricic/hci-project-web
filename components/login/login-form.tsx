@@ -8,6 +8,7 @@ import { useUserContext } from "common/user-context/use-user-context";
 import styles from "./login.module.scss";
 import { SecondaryButton } from "components/button/secondary-button";
 import { PrimaryButton } from "components/button/primary-button";
+import Image from "next/image";
 
 interface Props {
     isLogin?: boolean;
@@ -135,10 +136,10 @@ const LoginForm = ({ isLogin }: Props) => {
         return (
             <div className={styles.actions}>
                 <SecondaryButton text="Continue with Google" isWide={true}>
-                    <img src={google.src} width="20px" style={{ marginRight: "1em" }}/>
+                    <Image alt="Google icon" src={google} style={{ marginRight: "1em", width: "20px" }} width="20"/>
                     </SecondaryButton>
                 <SecondaryButton text="Continue with FaceBook" isWide={true}>
-                    <img src={facebook.src} width="20px" style={{ marginRight: "1em" }}/>
+                    <Image alt="Google icon" src={facebook} style={{ marginRight: "1em", width: "20px" }} width="20"/>
                 </SecondaryButton>
             </div>
         )

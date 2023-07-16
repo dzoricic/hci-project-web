@@ -15,7 +15,6 @@ const Gallery = () => {
     const renderEventGallery = () => {
         return eventData.filter((event) => event.date ? Date.parse(event.date) < Date.now() : false)
                         .map((event, index) => {
-                            console.log(gallery);
                             const eventPhotoPair = gallery?.filter((item) => item.eventId === event.id);
                             const photoCount = galleryList?.filter((item) => eventPhotoPair?.find((pair) => pair.pictureId === item.id)).length;
                             return <EventContainer key={index} event={{

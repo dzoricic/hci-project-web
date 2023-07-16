@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { DefaultContainerItem } from "typings";
 import styles from "./iwc.module.scss";
 import { SecondaryButton } from "components/button/secondary-button";
+import Image from "next/image";
 
 interface Props {
     homeItem: DefaultContainerItem
@@ -30,13 +31,13 @@ export const ImageWithContent = ({ homeItem, isImageOnLeft }: Props) => {
 
     return isImageOnLeft ? (
         <div className={styles.containerLeft}>
-            <img className={styles.image} src={homeItem.imageSource}/>
+            <img alt="Home image" className={styles.image} src={homeItem.imageSource}/>
             {renderContent()}
         </div>
     ) : (
         <div className={styles.containerRight}>
             {renderContent()}
-            <img className={styles.image} src={homeItem.imageSource}/>
+            <img alt="Home image" className={styles.image} src={homeItem.imageSource}/>
         </div>
     )
 }
