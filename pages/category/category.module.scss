@@ -4,20 +4,29 @@
     display: flex;
     flex-direction: column;
 
-    padding: 100px 500px;
+    padding: 50px 500px;
 }
 
 .header {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 
     gap: 50px;
     padding: 20px;
 }
 
+.topic {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 50px;
+}
+
 .image {
-    width: 120px;
+    width: 100px;
     aspect-ratio: 1;
     background-color: white;
 }
@@ -29,21 +38,22 @@
 
 .drinkList {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    
+    flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
-.drinkRow {
+.drinkItem {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 
-    background-color: $background_secondary;
+    width: 50%;
 
-    gap: 20px;
-    padding: 10px;
-    margin: 3px;
-
-    border-radius: 5px;
+    gap: 30px;
+    padding: 10px 30px;
 }
 
 .description {
@@ -53,10 +63,100 @@
 }
 
 .descriptionTitle {
-    font-size: x-large;
+    font-size: large;
 }
 
 .descriptionText {
-    font-size: large;
+    font-size: medium;
     color: gray;
+}
+
+@media screen and (max-width: 1700px) {
+    .main {
+        padding: 45px 150px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .main {
+        padding: 40px 100px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .main {
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main {
+        padding: 15px;
+    }
+    .drinkItem {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 40px;
+    }
+    .image {
+        width: 80px;
+    }
+    .title {
+        font-size: x-large;
+        color: white;
+    }
+    .header {
+        gap: 20px;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main {
+        padding: 20px;
+    }
+    .image {
+        width: 70px;
+    }
+    .title {
+        font-size: large;
+        color: white;
+    }
+    .topic {
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        padding: 0;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-end;
+    
+        gap: 0;
+        padding: 20px;
+    }
+    .topic {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+
+        width: 100%;
+        gap: 0;
+    }
+    .image {
+        width: 90px;
+    }
+    .title {
+        font-size: xx-large;
+        color: white;
+    }
 }

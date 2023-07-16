@@ -2,7 +2,7 @@ import { PageWrapper } from "components";
 import { TableArea } from "enums";
 import { floor_plan } from "icons";
 import { useRouter } from "next/router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Area, EventData, Table, User } from "typings";
 import styles from "./event.module.scss";
 import {va, sa, bar} from "../../icons";
@@ -10,17 +10,37 @@ import { areaData } from "fake-data";
 import dropdownStyles from "../../components/header/dropdown.module.scss";
 import { useUserContext } from "common/user-context/use-user-context";
 import { Summary } from "./summary";
+import { eventData } from "fake-data/event-data";
+import { BackButton } from "components/button/back-button";
+import { Loading } from "@nextui-org/react";
 
 const Reservation = () => {
     const router = useRouter();
-    // snackbar
+    const { eventId } = router.query;
     const { user } = useUserContext();
-    const [event, setEvent] = React.useState<EventData>();
-    const [selectedArea, setSelectedArea] = React.useState<Area | undefined>(areaData[0]);
+    const [selectedArea, setSelectedArea] = React.useState<Area>();
     const [selectedTable, setSelectedTable] = React.useState<Table>();
     const [sortByName, setSortByName] = useState<boolean>(true);
     const [sortAsc, setSortAsc] = useState<boolean>(true);
     const [openSort, setOpenSort] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(true);
+    
+    const event = eventData.find((event) => event.id == eventId)
+
+    useEffect(() => {
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
+
+    if (!event) {
+        return loading ? <Loading/> : (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "100px", margin: "50px 0" }}>
+                <BackButton text="Back to events" onClick={() => router.push("/events")}/>
+                <span style={{ fontSize: "xx-large" }}>Could not find the event</span>
+            </div>
+        )
+    }
 
     const renderSortByDropdown = (): JSX.Element => (
         <div
@@ -85,7 +105,7 @@ const Reservation = () => {
             <div
                 key={index}
                 className={styles.tab}
-                style={((area === "All" && !selectedArea) || area === selectedArea?.type) ? { backgroundColor: "#2C2C2C" } : undefined}
+                style={((area === "All" && !selectedArea) || area === selectedArea?.type) ? { backgroundColor: "#282828" } : undefined}
                 onClick={() => setSelectedArea(areaData.find(areaInfo => areaInfo.type === area))}
             >{area}</div>
         ))
@@ -109,7 +129,7 @@ const Reservation = () => {
         return array.map((table, index) => (
             <div key={index} className={styles.row} onClick={() => setSelectedTable(table)}>
                 <span>{table.name}</span>
-                <span>{table.price}.00</span>
+                <span>${table.price}.00</span>
             </div>
         ))
     }
@@ -128,6 +148,7 @@ const Reservation = () => {
     const renderTables = () => (
         <div className={styles.tablesContainer}>
             <div className={styles.table}>
+                <span className={styles.tableTitle}>Table reservation</span>
                 <div className={styles.tabs}>
                     {renderAreaTabs()}
                 </div>
@@ -146,11 +167,23 @@ const Reservation = () => {
         </div>
     )
 
+    const renderEvent = () => {
+        return (
+            <div className={styles.eventContainer}>
+                <BackButton text="Back to events" onClick={() => router.push("/events")}/>
+                <div className={styles.eventInfo}>
+                    <span className={styles.eventName}>{event.name}</span>
+                    <img className={styles.eventImage} src={event.imageSource}/>
+                </div>
+            </div>
+        )
+    }
+
     return (
         <PageWrapper>
             <div className={styles.main}>
                 <div className={styles.container}>
-                    {renderHeader()}
+                    {renderEvent()}
                     {renderTables()}
                     <Summary table={selectedTable}/>
                 </div>

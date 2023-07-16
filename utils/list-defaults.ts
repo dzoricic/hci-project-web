@@ -1,4 +1,211 @@
-import { FooterItem, HeaderItem, DefaultContainerItem, GalleryImage } from 'typings';
+import { FooterItem, HeaderItem, DefaultContainerItem, GalleryImage, Gallery } from 'typings';
+
+export const gallery: Gallery[] = [
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '1'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '2'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '3'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '4'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '5'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '6'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '7'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '8'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '9'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '10'
+    },
+    {
+        eventId: '63cd1e28f03aac5f7c60892b',
+        pictureId: '11'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '12'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '13'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '14'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '15'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '16'
+    },
+    {
+        eventId: '63cd1e28251362cfeff7b808',
+        pictureId: '17'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '18'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '19'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '20'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '21'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '22'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '23'
+    },
+    {
+        eventId: '63cd1e285425a5e3acdf9956',
+        pictureId: '24'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '25'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '14'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '12'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '25'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '2'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '23'
+    },
+    {
+        eventId: '63cd1e28957ca40cbf56d696',
+        pictureId: '8'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '2'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '1'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '5'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '15'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '24'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '19'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '22'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '13'
+    },
+    {
+        eventId: '63cd1e28a566884fa89fc303',
+        pictureId: '15'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '21'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '12'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '23'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '17'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '11'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '9'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '4'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '5'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '16'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '18'
+    },
+    {
+        eventId: '63cd1e282bfcaf3e8540a5ee',
+        pictureId: '23'
+    },
+]
 
 export const galleryList: GalleryImage[] = [
     {
@@ -48,6 +255,58 @@ export const galleryList: GalleryImage[] = [
     {
         id: '12',
         imageSource: '/static/gallery/gallery12.png'
+    },
+    {
+        id: '13',
+        imageSource: 'https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '14',
+        imageSource: 'https://images.pexels.com/photos/801863/pexels-photo-801863.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '15',
+        imageSource: 'https://images.pexels.com/photos/1150988/pexels-photo-1150988.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '16',
+        imageSource: 'https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '17',
+        imageSource: 'https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '18',
+        imageSource: 'https://images.pexels.com/photos/3172566/pexels-photo-3172566.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '19',
+        imageSource: 'https://images.pexels.com/photos/2034851/pexels-photo-2034851.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '20',
+        imageSource: 'https://images.pexels.com/photos/844928/pexels-photo-844928.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '21',
+        imageSource: 'https://images.pexels.com/photos/788824/pexels-photo-788824.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '22',
+        imageSource: 'https://images.pexels.com/photos/274192/pexels-photo-274192.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '23',
+        imageSource: 'https://images.pexels.com/photos/1677573/pexels-photo-1677573.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '24',
+        imageSource: 'https://images.pexels.com/photos/2123606/pexels-photo-2123606.jpeg?auto=compress&cs=tinysrgb&w=1600'
+    },
+    {
+        id: '25',
+        imageSource: 'https://images.pexels.com/photos/2078008/pexels-photo-2078008.jpeg?auto=compress&cs=tinysrgb&w=1600'
     }
 ]
 

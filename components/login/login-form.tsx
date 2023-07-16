@@ -3,33 +3,38 @@ import { userData } from "fake-data";
 import { facebook, google } from "icons";
 import { useRouter } from "next/router";
 import React from "react";
-import styles from "styles/home-page.module.scss";
 import { toast } from "react-toastify";
+import { useUserContext } from "common/user-context/use-user-context";
+import styles from "./login.module.scss";
+import { SecondaryButton } from "components/button/secondary-button";
+import { PrimaryButton } from "components/button/primary-button";
 
 interface Props {
     isLogin?: boolean;
 }
 
 const LoginForm = ({ isLogin }: Props) => {
-    const [username, setUsername] = React.useState<string | null>();
+    const [email, setEmail] = React.useState<string | null>();
     const [password, setPassword] = React.useState<string | null>();
     const [name, setName] = React.useState<string>();
     const [lastname, setLastname] = React.useState<string>();
+
+    const { login, register } = useUserContext();
 
     const router = useRouter();
 
     React.useEffect(function onMount() {
         if (isLogin) {
-            localStorage.removeItem('username');
+            localStorage.removeItem('email');
             localStorage.removeItem('password');
         } else {
-            setUsername(localStorage.getItem('username'));
+            setEmail(localStorage.getItem('email'));
             setPassword(localStorage.getItem('password'));
         }
-    })
+    }, [])
 
-    const handleUsername = (value: string) => {
-        setUsername(value);
+    const handleEmail = (value: string) => {
+        setEmail(value);
     }
 
     const handlePassword = (value: string) => {
@@ -45,37 +50,28 @@ const LoginForm = ({ isLogin }: Props) => {
     }
 
     const onRegister = () => {
-        localStorage.setItem('username', username ?? '');
-        localStorage.setItem('password', password ?? '');
-        router.push('/register');
+        if (isLogin) {
+            localStorage.setItem('username', email ?? '');
+            localStorage.setItem('password', password ?? '');
+            router.push('/register');
+            return;
+        }
+        register(name, lastname, email, password);
     }
 
     const onLogin = () => {
-        const user = userData.find((u) => u.userName === username);
-        if (user) {
-            localStorage.setItem('user_id', user.id);
-            toast.success("Logged in!", {
-                position: toast.POSITION.BOTTOM_LEFT
-            });
-            router.push('/home');
-            return;
-        
-        }
+        login(email, password);
     }
 
     const resolveEnterKey = (key: string) => {
         if (key === 'Enter') {
-            onLogin();
+            isLogin ? onLogin() : onRegister();
         }
     }
 
     const resolveLoginButton = () => {
         if (isLogin) {
-            return (
-                <Button css={{ marginBottom: "2em" }} onClick={onLogin}>
-                    Login
-                </Button>
-            )
+            return <PrimaryButton isWide={true} text="Login" onClick={onLogin}/>
         }
     }
 
@@ -86,7 +82,6 @@ const LoginForm = ({ isLogin }: Props) => {
         return (
             <>
                 <Input
-                    underlined
                     labelPlaceholder="Name"
                     value={name}
                     fullWidth
@@ -95,7 +90,6 @@ const LoginForm = ({ isLogin }: Props) => {
                     onKeyDown={(event) => resolveEnterKey(event.key)}
                 />
                 <Input
-                    underlined
                     labelPlaceholder="Lastname"
                     value={lastname}
                     fullWidth
@@ -109,19 +103,17 @@ const LoginForm = ({ isLogin }: Props) => {
 
     const resolveLoginStuff = () => {
         return (
-            <Grid.Container xs={8} css={{ marginRight: "4em" }}>
-                {resolveRegisterFields()}
+            <div className={styles.loginForm}>
+                { resolveRegisterFields() }
                 <Input
-                    underlined
-                    labelPlaceholder="Username"
-                    value={username ?? undefined}
+                    labelPlaceholder="Email"
+                    value={email ?? undefined}
                     fullWidth
                     css={{ marginBottom: "2em" }}
-                    onChange={(event) => handleUsername(event.target.value)}
+                    onChange={(event) => handleEmail(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
                 />
                 <Input
-                    underlined
                     type="password"
                     labelPlaceholder="Password"
                     value={password ?? undefined}
@@ -130,51 +122,44 @@ const LoginForm = ({ isLogin }: Props) => {
                     onChange={(event) => handlePassword(event.target.value)}
                     onKeyDown={(event) => resolveEnterKey(event.key)}
                 />
-                <Grid.Container direction="column" alignItems="center">
-                    {resolveLoginButton()}
-                    <Button onClick={onRegister} className={ styles.homeContainerButton } css={{color: 'Black', backgroundColor: '$secondary', marginBottom: "2em"}}>
-                        Register
-                    </Button>
+                <div className={styles.actions}>
+                    { resolveLoginButton() }
+                    <SecondaryButton isWide={true} text="Register" onClick={onRegister}/>
                     <a style={{ color: "gray" }}><u>Forgot your password?</u></a>
-                </Grid.Container>
-            </Grid.Container>
+                </div>
+            </div>
         )
     }
 
     const handleGmailStuff = () => {
         return (
-            <Grid.Container xs={6} direction="column" alignItems="center">
-                <Button onClick={() => router.push('https://mail.google.com/')} size="lg" className={ styles.homeContainerButton } css={{color: 'Black', backgroundColor: '$secondary', marginBottom: "2em", width: "100%" }}>
-                    <img src={google.src} width="20px" style={{ marginRight: "2em" }}/>
-                    Continue with Google
-                </Button>
-                <Button onClick={() => router.push('https://www.facebook.com/')} size="lg" className={ styles.homeContainerButton } css={{color: 'Black', backgroundColor: '$secondary', marginBottom: "2em", width: "100%" }}>
-                    <img src={facebook.src} width="20px" style={{ marginRight: "2em" }}/>
-                    Continue with FaceBook
-                </Button>
-            </Grid.Container>
+            <div className={styles.actions}>
+                <SecondaryButton text="Continue with Google" isWide={true}>
+                    <img src={google.src} width="20px" style={{ marginRight: "1em" }}/>
+                    </SecondaryButton>
+                <SecondaryButton text="Continue with FaceBook" isWide={true}>
+                    <img src={facebook.src} width="20px" style={{ marginRight: "1em" }}/>
+                </SecondaryButton>
+            </div>
         )
     }
 
     return (
-        <Grid.Container justify="center">
-            <Grid.Container xs={8} justify="center" css={{ backgroundColor: "$background_secondary", padding: "5em", margin: "5em" }}>
-                <Text h2>Welcome Back!</Text>
-                <Grid.Container alignItems="center">
-                    <Grid.Container xs={5.75} direction="column" alignItems="center">
-                        {resolveLoginStuff()}
-                    </Grid.Container>
-                    <Grid.Container xs={0.5} direction="column" alignItems="center">
-                        <Grid css={{ borderLeft: "2px solid white", height: "130px" }}/>
-                        <Text>Or</Text>
-                        <Grid css={{ borderLeft: "2px solid white", height: "130px" }}/>
-                    </Grid.Container>
-                    <Grid.Container xs={5.75} direction="column" alignItems="center">
-                        {handleGmailStuff()}
-                    </Grid.Container>
-                </Grid.Container>
-            </Grid.Container>
-        </Grid.Container>
+        <div className={styles.main}>
+            <div className={styles.formContainer}>
+                <span className={styles.mobileTitle}>Welcome Back!</span>
+                { resolveLoginStuff() }
+                <div className={styles.divider}>
+                    <span className={styles.title}>Welcome Back!</span>
+                    <div className={styles.dividerLine}/>
+                    <span>Or</span>
+                    <div className={styles.dividerLine}/>
+                </div>
+                <div className={styles.loginForm}>
+                    <div>{ handleGmailStuff() }</div>
+                </div>
+            </div>
+        </div>
     )
 }
 

@@ -57,6 +57,18 @@ const Header = (props: Props) => {
         </div>
     );
 
+    const renderBalance = () => {
+        if (!user) {
+            return;
+        }
+        return (
+            <>
+                <span className={styles.balanceKey}>Balance</span>
+                <span className={styles.balanceValue}>${user.balance}.00</span>
+            </>
+        )
+    }
+
     const renderNavbarUser = (): JSX.Element | undefined => {
         if (!user) {
             return;
@@ -95,6 +107,7 @@ const Header = (props: Props) => {
                 { resolveNavbarLinks() }
             </div>
             <div className={styles.userContainer}>
+                { renderBalance() }
                 { renderLoginButton() }
                 { renderNavbarUser() }
             </div>

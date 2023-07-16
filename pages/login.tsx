@@ -6,9 +6,7 @@ import React from "react";
 const Login = () => {
     return (
         <PageWrapper>
-            <Grid.Container justify="center">
-                <LoginForm isLogin/>
-            </Grid.Container>
+            <LoginForm isLogin={true}/>
         </PageWrapper>
     )
 }

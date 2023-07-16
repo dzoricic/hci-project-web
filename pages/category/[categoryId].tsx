@@ -2,6 +2,11 @@ import { useRouter } from "next/router";
 import styles from "./category.module.scss";
 import data from "../../fake-data/drinks.json";
 import { Drink } from "typings";
+import { PageWrapper } from "components";
+import { BackButton } from "components/button/back-button";
+import TitlePicture from "components/title/title-picture";
+import { Page } from "enums";
+import { titlePictureData } from "utils";
 
 const Category = () => {
     const router = useRouter();
@@ -19,15 +24,23 @@ const Category = () => {
     }
 
     return (
-        <div className={styles.main}>
-            <div className={styles.header}>
-                <img className={styles.image} src={category?.imageSource}/>
-                <span className={styles.title}>{category?.name}</span>
-            </div>
-            <div className={styles.drinkList}>
-                {renderDrinks(category?.drinks)}
-            </div>
-        </div>
+        <PageWrapper>
+            <>
+                <TitlePicture picture={titlePictureData[Page.DRINK_OFFER]}/>
+                <div className={styles.main}>
+                    <div className={styles.header}>
+                        <BackButton text="Back to offers" onClick={() => router.push("/offers")}/>
+                        <div className={styles.topic}>
+                            <span className={styles.title}>{category?.name}</span>
+                            <img className={styles.image} src={category?.imageSource}/>
+                        </div>
+                    </div>
+                    <div className={styles.drinkList}>
+                        {renderDrinks(category?.drinks)}
+                    </div>
+                </div>
+            </>
+        </PageWrapper>
     )
 }
 
@@ -41,11 +54,11 @@ const renderDrinks = (drinks?: Drink[]) => {
 }
 
 const renderDrinkRow = (drink: Drink) => (
-    <div className={styles.drinkRow}>
-        <img className={styles.drinkImage} src={undefined}/>
+    <div className={styles.drinkItem}>
         <div className={styles.description}>
             <span className={styles.descriptionTitle}>{ drink.name }</span>
             <span className={styles.descriptionText}>{ drink.description }</span>
         </div>
+        <span className={styles.price}>${ drink.price }</span>
     </div>
 )

@@ -10,13 +10,13 @@ interface Props {
 
 const GalleryItem = ({ galleryItem, onClick }: Props) => {
     return (
-        <Grid xs={12} sm={4} lg={3} css={{ padding: '2em' }}>
+        <div className={styles.container}>
             <img
                 src={galleryItem.imageSource}
                 className={styles.galleryItem}
                 onClick={() => onClick(galleryItem.id)}
             />
-        </Grid>
+        </div>
     )
 }
 

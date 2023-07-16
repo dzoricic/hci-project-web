@@ -4,37 +4,41 @@ import { userData } from "fake-data";
 import { useRouter } from "next/router";
 import React from "react";
 import { EventData, User } from "typings";
-import styles from "styles/home-page.module.scss";
+import styles from "./user.module.scss";
 import { toast } from "react-toastify";
+import { useUserContext } from "common/user-context/use-user-context";
+import { SecondaryButton } from "components/button/secondary-button";
+import { galleryList } from "utils";
+import { default_picture } from "icons";
+import { PrimaryButton } from "components/button/primary-button";
 
 const UserProfile = () => {
     const router = useRouter();
-    const [loggedInId, setLoggedInId] = React.useState<string>();
 
-    const [user, setUser] = React.useState<User | undefined>();
+    const { user: myUser, updateUser } = useUserContext();
+
     const [edit, setEdit] = React.useState<boolean>(false);
+    const [user, setUserProfile] = React.useState<User>();
     const [username, setUsername] = React.useState<string | null>();
     const [password, setPassword] = React.useState<string | null>();
     const [name, setName] = React.useState<string>();
     const [lastname, setLastname] = React.useState<string>();
     const [email, setEmail] = React.useState<string>();
     const [phone, setPhone] = React.useState<string>();
-    const [isDisabled, setIsDisabled] = React.useState<boolean>();
+    const [isDisabled, setIsDisabled] = React.useState<boolean>(true);
+
+    const pictures = galleryList;
 
     function onMount() {
         const { userId } = router.query;
         const profileUser = userData.find((us) => us.id === userId);
         if (profileUser) {
-            setUser(profileUser);
+            setUserProfile(profileUser);
             setUsername(profileUser.userName);
             setName(profileUser.firstName);
             setLastname(profileUser.lastName);
             setEmail(profileUser.email);
             setPhone(profileUser.phone);
-        }
-        const loggedInUserId = localStorage.getItem('user_id');
-        if (loggedInUserId) {
-            setLoggedInId(loggedInUserId)
         }
     }
 
@@ -43,23 +47,29 @@ const UserProfile = () => {
 
     React.useEffect(function didUpdate() {
         validateChangeButton();
-    }, [username, password, name, lastname, email, phone])
+    }, [JSON.stringify(user), JSON.stringify(myUser), username, password, name, lastname, email, phone])
 
     const listEvents = () => {
+        if (!user?.events?.length) {
+            return (
+                <div className={styles.noEvents}>
+                    <span>You have not gone to any event!</span>
+                    <PrimaryButton text="Make a reservation" onClick={() => router.push("/events")}/>
+                </div>
+            )
+        }
         return user?.events?.map((event) => renderPastEvents(event))
     }
 
     const renderPastEvents = (event: EventData) => {
         return (
-            <Grid.Container alignItems="center" css={{ margin: "1em 0" }}>
-                <Grid.Container xs={4}>
-                    <img src={event.imageSource}/>
-                </Grid.Container>
-                <Grid.Container xs={8} direction="column" justify="center" alignItems="flex-start" css={{ padding: "2em" }}>
-                    <Text h3>{event.name}</Text>
-                    <Text h4 css={{ color: "gray" }}>{event.date}</Text>
-                </Grid.Container>
-            </Grid.Container>
+            <div className={styles.pastEvents} onClick={() => router.push(`/gallery/${event.id}`)}>
+                <img className={styles.pastEventPhoto} src={event.imageSource}/>
+                <div className={styles.pastEventData}>
+                    <span className={styles.totalValue}>{ event.name }</span>
+                    <span className={styles.totalKey}>{ event.date }</span>
+                </div>
+            </div>
         )
     }
 
@@ -70,8 +80,7 @@ const UserProfile = () => {
             user?.userName !== username ||
             user?.phone !== phone ||
             user?.email !== email ||
-            password ||
-            password !== ''
+            !!password
         ) {
             setIsDisabled(false);
             return;
@@ -99,126 +108,118 @@ const UserProfile = () => {
             balance: user.balance,
             imageUrl: user.imageUrl
         }
-        setUser(newUser);
-        toast.warning("Save successful", {
-            position: toast.POSITION.BOTTOM_LEFT
-        })
+        updateUser(newUser);
+        setUserProfile(newUser);
+        setEdit(false);
     }
 
     const renderUserProfile = () => {
         if (edit) {
             return (
-                <Grid.Container direction="column" justify="flex-start" alignItems="flex-start">
-                    <Grid.Container>
+                <div className={styles.profileDataForm}>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
-                            labelPlaceholder="Name"
+                            labelRight="Name"
                             value={name ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
                             onChange={(event) => setName(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container>
+                    </div>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
-                            labelPlaceholder="Lastname"
+                            labelRight="Lastname"
                             value={lastname ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
                             onChange={(event) => setLastname(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container>
+                    </div>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
-                            labelPlaceholder="Username"
+                            labelRight="Username"
                             value={username ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
                             onChange={(event) => setUsername(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container>
+                    </div>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
-                            labelPlaceholder="Email"
+                            labelRight="Email"
                             value={email ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
                             onChange={(event) => setEmail(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container>
+                    </div>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
-                            labelPlaceholder="Phone"
+                            labelRight="Phone"
                             value={phone ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
                             onChange={(event) => setPhone(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container>
+                    </div>
+                    <div className={styles.profileDataRow}>
                         <Input
-                            underlined
+                            labelRight="Password"
                             type="password"
-                            labelPlaceholder="New password"
                             value={password ?? undefined}
                             fullWidth
-                            css={{ marginBottom: "2em" }}
+                            css={{ color: "black" }}
                             onChange={(event) => setPassword(event.target.value)}
                         />
-                    </Grid.Container>
-                    <Grid.Container justify="flex-end">
-                        <Button auto disabled={isDisabled} onClick={saveChanges} className={ styles.homeContainerButton } css={{color: 'Black', backgroundColor: '$secondary'}}>
-                            Save changes
-                        </Button>
-                    </Grid.Container>
-                </Grid.Container>
+                    </div>
+                    <div className={styles.saveButtonContainer}>
+                        <SecondaryButton text="Save changes" onClick={saveChanges} disabled={isDisabled}/>
+                    </div>
+                </div>
             )
         }
 
         return (
-            <Grid.Container direction="column" justify="flex-start" alignItems="flex-start">
-                <Grid.Container>
-                    <Text h3 css={{ color: "gray", marginRight: "1em" }}>Name:</Text>
-                    <Text h3>{user?.firstName}</Text>
-                </Grid.Container>
-                <Grid.Container>
-                    <Text h3 css={{ color: "gray", marginRight: "1em" }}>Lastname:</Text>
-                    <Text h3>{user?.lastName}</Text>
-                </Grid.Container>
-                <Grid.Container>
-                    <Text h3 css={{ color: "gray", marginRight: "1em" }}>Username:</Text>
-                    <Text h3>{user?.userName}</Text>
-                </Grid.Container>
-                <Grid.Container>
-                    <Text h3 css={{ color: "gray", marginRight: "1em" }}>Email:</Text>
-                    <Text h3>{user?.email}</Text>
-                </Grid.Container>
-                <Grid.Container>
-                    <Text h3 css={{ color: "gray", marginRight: "1em" }}>Phone:</Text>
-                    <Text h3>{user?.phone}</Text>
-                </Grid.Container>
-            </Grid.Container>
+            <div className={styles.profileDataContainer}>
+                <div className={styles.profileDataRow}>
+                    <span className={styles.infoKey}>Name:</span>
+                    <span className={styles.infoValue}>{user?.firstName}</span>
+                </div>
+                <div className={styles.profileDataRow}>
+                    <span className={styles.infoKey}>Lastname:</span>
+                    <span className={styles.infoValue}>{user?.lastName}</span>
+                </div>
+                <div className={styles.profileDataRow}>
+                    <span className={styles.infoKey}>Username:</span>
+                    <span className={styles.infoValue}>{user?.userName}</span>
+                </div>
+                <div className={styles.profileDataRow}>
+                    <span className={styles.infoKey}>Email:</span>
+                    <span className={styles.infoValue}>{user?.email}</span>
+                </div>
+                <div className={styles.profileDataRow}>
+                    <span className={styles.infoKey}>Phone:</span>
+                    <span className={styles.infoValue}>{user?.phone}</span>
+                </div>
+            </div>
         )
     }
 
     const toggleEdit = () => {
-        if (user?.id === loggedInId) {
+        if (user?.id === myUser?.id) {
             setEdit(!edit);
         }
     }
 
     const resolveToggleButton = () => {
-        if (user?.id === loggedInId) {
-            return (
-                <Button auto onClick={toggleEdit} className={ styles.homeContainerButton } css={{color: 'Black', backgroundColor: '$secondary'}}>
-                    Toggle edit
-                </Button>
-            )
+        if (user?.id === myUser?.id) {
+            return <SecondaryButton text="Toggle edit" onClick={toggleEdit}/>
         }
+    }
+
+    const renderPhotos = () => {
+        if (!pictures) {
+            return <span>No photos found</span>
+        }
+        if (!user?.events?.length) {
+            return <span style={{ textAlign: "center" }}>Go to event to see photos on your profile!</span>
+        }
+        return pictures.map((picture, index) => <img key={index} className={styles.galleryImage} src={picture.imageSource}/>)
     }
 
     if (!user) {
@@ -234,47 +235,60 @@ const UserProfile = () => {
     return (
         <PageWrapper>
             <main>
-                <Grid.Container justify="space-between" alignItems="center" css={{ backgroundColor: "$background_secondary" }}>
-                    <Grid.Container xs={4} alignItems="center">
-                        <img src={user?.imageUrl} width="100px" style={{ borderRadius: "100px", margin: "3em" }}/>
-                        <Text h2>{user?.firstName} {user?.lastName}</Text>
-                    </Grid.Container>
-                    <Grid.Container xs={3}>
-                        <Grid.Container xs={4} direction="column" alignItems="center">
-                            <Text h3>{user?.totalVisits}</Text>
-                            <Text h3 css={{ color: "gray", fontWeight: 600 }}>Total visits</Text>
-                        </Grid.Container>
-                        <Grid.Container xs={4} direction="column" alignItems="center">
-                            <Text h3>{user?.totalSpent} €</Text>
-                            <Text h3 css={{ color: "gray", fontWeight: 600 }}>Total spent</Text>
-                        </Grid.Container>
-                    </Grid.Container>
-                        <Grid.Container xs={2} alignItems="center">
-                            <Text h3 css={{ color: "gray", fontWeight: 600, marginRight: "2em" }}>Balance</Text>
-                            <Text h3>{user?.balance} €</Text>
-                        </Grid.Container>
-                </Grid.Container>
-                <Grid.Container>
-                    <Grid.Container direction="column" xs={4} css={{ padding: "2em" }}>
-                        <Grid.Container css={{ padding:"2em", backgroundColor: "$background_secondary" }}>
-                            <Grid.Container justify="space-between" alignItems="center" css={{ marginBottom: "2em" }}>
-                                <Text h2>Profile</Text>
-                                {resolveToggleButton()}
-                            </Grid.Container>
-                            {renderUserProfile()}
-                        </Grid.Container>
-                    </Grid.Container>
-                    <Grid.Container xs={4} css={{ padding: "2em 0" }}>
-                    </Grid.Container>
-                    <Grid.Container xs={4} css={{ padding: "2em" }}>
-                        <Grid.Container css={{ padding:"2em", backgroundColor: "$background_secondary" }}>
-                            <Grid.Container>
-                                <Text h2>Past Events</Text>
-                            </Grid.Container>
-                            {listEvents()}
-                        </Grid.Container>
-                    </Grid.Container>
-                </Grid.Container>
+                <div className={styles.header}>
+                    <div className={styles.basicInfo}>
+                        <img className={styles.profilePhoto} src={user?.imageUrl ?? default_picture.src}/>
+                        <span className={styles.usernameText}>{user?.firstName} {user?.lastName}</span>
+                    </div>
+                    <div className={styles.totalContainer}>
+                        <div className={styles.totalData}>
+                            <span className={styles.totalValue}>{ user?.totalVisits }</span>
+                            <span className={styles.totalKey}>Total visits</span>
+                        </div>
+                        <div className={styles.totalData}>
+                            <span className={styles.totalValue}>${ user?.totalSpent }.00</span>
+                            <span className={styles.totalKey}>Total spent</span>
+                        </div>
+                    </div>
+                    <div className={styles.balance}>
+                        <span className={styles.totalKey}>Balance</span>
+                        <span className={styles.totalValue}>${ user?.balance }.00</span>
+                    </div>
+                </div>
+                <div className={styles.content}>
+                    <div className={styles.sectionMain}>
+                        <div className={styles.sectionContainer2}>
+                            <div className={styles.section}>
+                                <div className={styles.profileSectionTitle}>
+                                    <span className={styles.title}>Profile</span>
+                                    {resolveToggleButton()}
+                                </div>
+                                {renderUserProfile()}
+                            </div>
+                        </div>
+                        <div className={styles.sectionContainer2}>
+                            <div className={styles.section}>
+                                <div className={styles.profileSectionTitle}>
+                                    <span className={styles.title}>Pictures from your events</span>
+                                    {user?.events?.length && <SecondaryButton text="More pictures" onClick={() => router.push("/gallery")}/>}
+                                </div>
+                                <div className={styles.gallery}>
+                                    {renderPhotos()}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={styles.sectionContainer}>
+                        <div className={styles.section}>
+                            <div className={styles.profileSectionTitle}>
+                                <span className={styles.title}>Past Events</span>
+                            </div>
+                            <div className={styles.pastEventList}>
+                                {listEvents()}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main>
         </PageWrapper>
     )

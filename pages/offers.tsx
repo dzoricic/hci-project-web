@@ -44,6 +44,7 @@ const renderAccordions = (menu?: DrinkResponse, onClick?: (categoryName?: string
     }
     return menu.categories.map((category, index) => (
         <EventContainer
+            key={index}
             pointer={true}
             onClickWhole={() => onClick?.(category.id)}
             event={{

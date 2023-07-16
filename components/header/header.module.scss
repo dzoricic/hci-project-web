@@ -1,11 +1,21 @@
+@import "../../styles/colors.module.scss";
+
 .navbar {
+    position: sticky;
+    top: 0;
+    left: 0;
+
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
+    background-color: $background_secondary;
+
     padding: 0 200px;
     min-height: 70px;
+
+    box-shadow: 0px -4px 20px black;
 }
 
 .navigation {
@@ -16,6 +26,8 @@
 .pages {
     display: flex;
     align-items: center;
+
+    margin-right: 200px;
 }
 
 .mobilePages {
@@ -24,6 +36,17 @@
 
     display: none;
     width: 3em;
+}
+
+.userContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.balanceKey {
+    font-size: medium;
+    color: gray;
 }
 
 .headerLogo {
@@ -64,6 +87,9 @@
         margin-left: 50px;
         margin-right: 50px;
     }
+    .pages {
+        margin-right: 120px;
+    }
 }
 
 @media screen and (max-width: 1250px) {
@@ -75,6 +101,9 @@
         margin-left: 40px;
         margin-right: 40px;
     }
+    .pages {
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -85,6 +114,12 @@
     .headerLogo {
         margin-left: 20px;
         margin-right: 20px;
+    }    
+    .balanceKey {
+        display: none;
+    }
+    .balanceValue {
+        display: none;
     }
 }
 

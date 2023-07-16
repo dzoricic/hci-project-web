@@ -23,6 +23,11 @@ export interface HomeTitleProps {
     text: string;
 }
 
+export interface Gallery {
+    eventId: string;
+    pictureId: string;
+}
+
 export interface GalleryImage {
     id: string;
     imageSource: string;
@@ -46,6 +51,7 @@ export interface EventData {
     id: string;
     name: string;
     date?: string;
+    description?: string;
     imageSource?: string;
 }
 

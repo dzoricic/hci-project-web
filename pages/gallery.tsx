@@ -1,65 +1,56 @@
-import { useState } from "react";
-import { Grid } from "@nextui-org/react";
-
-import { GalleryItem, PageWrapper } from "components";
-import { Page } from "enums";
-import { GalleryImage } from "typings";
-
-import { galleryList, titlePictureData } from "utils";
+import { PageWrapper } from "components";
+import styles from "styles/gallery.module.scss";
+import { eventData } from "fake-data/event-data";
+import EventContainer from "components/events/event-container";
+import { useRouter } from "next/router";
+import { gallery as data, galleryList, titlePictureData } from "utils";
 import TitlePicture from "components/title/title-picture";
-import GalleryModal from "components/gallery/gallery-modal";
+import { Page } from "enums";
 
 const Gallery = () => {
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-    const [activeImage, setActiveImage] = useState<GalleryImage | undefined>();
+    const router = useRouter();
 
-    const openModal = (imageId: string) => {
-        const galleryItem = galleryList.find((item) => item.id === imageId);
-        setActiveImage(galleryItem);
-        setIsModalOpen(true);
-    }
+    const gallery = data;
 
-    const closeModal = () => {
-        setIsModalOpen(false);
-    }
-
-    const switchImage = (goingLeft: boolean) => {
-        if (!activeImage) {
-            return;
-        }
-        const activeIndex = galleryList.indexOf(activeImage);
-        const listLength = galleryList.length;
-
-        if (goingLeft) {
-            if (activeIndex === 0) {
-                setActiveImage(galleryList[listLength - 1]);
-                return;
-            }
-            setActiveImage(galleryList[activeIndex - 1]);
-            return;
-        }
-        if (activeIndex === listLength - 1) {
-            setActiveImage(galleryList[0]);
-            return;
-        }
-        setActiveImage(galleryList[activeIndex + 1]);
-    }
-
-    const renderGalleryList = () => {
-        return galleryList.map((galleryItem) => <GalleryItem key={galleryItem.id} galleryItem={galleryItem} onClick={openModal}/>)
+    const renderEventGallery = () => {
+        return eventData.filter((event) => event.date ? Date.parse(event.date) < Date.now() : false)
+                        .map((event, index) => {
+                            console.log(gallery);
+                            const eventPhotoPair = gallery?.filter((item) => item.eventId === event.id);
+                            const photoCount = galleryList?.filter((item) => eventPhotoPair?.find((pair) => pair.pictureId === item.id)).length;
+                            return <EventContainer key={index} event={{
+                                id: event.id,
+                                imageSource: event.imageSource,
+                                name: event.name,
+                                description: mapPhotoCountToLabel(photoCount)
+                            }} onClickWhole={() => router.push(`/gallery/${event.id}`)} pointer={true}/>
+                        })
     }
 
     return (
         <PageWrapper>
-            <main>
+            <>
                 <TitlePicture picture={titlePictureData[Page.PHOTO_GALLERY]}/>
-                <Grid.Container css={{ padding: '5em' }}>
-                    { renderGalleryList() }
-                </Grid.Container>
-                <GalleryModal galleryItem={activeImage} isOpen={isModalOpen} onClick={closeModal} onSwitchImage={switchImage}/>
-            </main>
+                <div className={styles.main}>
+                    {renderEventGallery()}
+                </div>
+            </>
         </PageWrapper>
     )
 }
 
 export default Gallery;
+
+const mapPhotoCountToLabel = (count?: number): string => {
+    if (!count) {
+        return "No photos in album";
+    }
+    switch (count) {
+        case 1:
+            return "1 photo in album";
+        case 0:
+            return "No photos in album";
+        default:
+            return `${count} photos in album`;
+    }
+}

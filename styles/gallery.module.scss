@@ -21,3 +21,95 @@
     animation-fill-mode: forwards;  
     animation-duration: 0.3s;
 }
+
+.main {
+    padding: 100px 300px;
+    display: flex;
+    flex-direction: row;
+
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 33.33%;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 300px;
+}
+
+@media screen and (max-width: 1700px) {
+    .main {
+        padding: 80px 150px;
+    }
+    .header {
+        padding: 20px 150px;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    .main {
+        padding: 60px 100px;
+    }
+    .header {
+        padding: 15px 100px;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .main {
+        padding: 30px;
+    }
+    .container {
+        width: 50%;
+    }
+    .header {
+        padding: 10px 30px;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .main {
+        padding: 15px;
+    }
+    .header {
+        padding: 5px 15px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        padding: 40px;
+    }
+    .container {
+        width: 100%;
+    }
+    .header {
+        padding: 5px 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main {
+        padding: 20px;
+    }
+    .header {
+        padding: 5px 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .main {
+        padding: 0;
+    }
+    .container {
+        padding: 10px
+    }
+    .header {
+        padding: 0 10px;
+    }
+}

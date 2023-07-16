@@ -24,7 +24,7 @@ const theme = createTheme({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider theme={theme}>
-      <UserContextProvider userId='63cd0b0562b0b718b56c7df0'>
+      <UserContextProvider>
         <Component {...pageProps}/>
         <ToastContainer/>
       </UserContextProvider>

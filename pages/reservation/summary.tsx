@@ -6,17 +6,19 @@ import { PrimaryButton } from "components/button/primary-button";
 import { vector2 } from "icons";
 import { mapAreaToImage } from "./[eventId]";
 import { useRouter } from "next/router";
+import { useUserContext } from "common/user-context/use-user-context";
 
 interface Props {
     table?: Table;
 }
 
 export const Summary = ({ table }: Props) => {
+    const { user } = useUserContext();
+    const area: Area | undefined = useMemo(() => findAreaByTable(table), [table]);
+
     if (!table) {
         return null;
     }
-
-    const area: Area | undefined = useMemo(() => findAreaByTable(table), [table]);
 
     if (!area) {
         return null;
@@ -46,6 +48,11 @@ export const Summary = ({ table }: Props) => {
                     <img className={styles.arrowImage} src={vector2.src}/>
                 </div>
                 <div className={styles.paymentSummary}>
+                    <div className={styles.row}>
+                        <span className={styles.paymentTotal}>Balance</span>
+                        <span className={styles.paymentTotal}>${user?.balance}.00</span>
+                    </div>
+                    <hr/>
                     <div className={styles.paymentDetails}>
                         <div className={styles.row}>
                             <span className={styles.paymentText}>Table</span>
@@ -72,6 +79,8 @@ export const Summary = ({ table }: Props) => {
         </div>  
     )
 }
+
+export default Summary;
 
 const findAreaByTable = (table?: Table): Area | undefined => {
     return areaData.find((area) => area.tables.find((t) => t.id === table?.id));
