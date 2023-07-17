@@ -215,6 +215,15 @@
     .content {
         padding: 10px;
     }
+    .totalKey {
+        font-size: large;
+    }
+    .totalValue {
+        font-size: large;
+    }
+    .title {
+        font-size: large;
+    }
 }
 
 @media screen and (max-width: 1250px) {
@@ -226,15 +235,6 @@
     }
     .content {
         padding: 10px;
-    }
-    .totalKey {
-        font-size: large;
-    }
-    .totalValue {
-        font-size: large;
-    }
-    .title {
-        font-size: large;
     }
 }
 
