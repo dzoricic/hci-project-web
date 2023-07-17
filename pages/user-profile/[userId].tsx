@@ -253,7 +253,7 @@ const UserProfile = () => {
                     </div>
                     <div className={styles.balance}>
                         <span className={styles.totalKey}>Balance</span>
-                        <span className={styles.totalValue}>${ user?.balance }</span>
+                        <span className={styles.totalValue}>${ user?.balance }.00</span>
                     </div>
                 </div>
                 <div className={styles.content}>
