@@ -68,7 +68,7 @@ const Header = (props: Props) => {
         return (
             <>
                 <span className={styles.balanceKey}>Balance</span>
-                <span className={styles.balanceValue}>${user.balance}..</span>
+                <span className={styles.balanceValue}>${user.balance}.00</span>
             </>
         )
     }
