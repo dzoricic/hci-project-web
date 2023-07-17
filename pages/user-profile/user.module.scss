@@ -227,6 +227,15 @@
     .content {
         padding: 10px;
     }
+    .totalKey {
+        font-size: large;
+    }
+    .totalValue {
+        font-size: large;
+    }
+    .title {
+        font-size: large;
+    }
 }
 
 @media screen and (max-width: 1024px) {
@@ -290,14 +299,5 @@
     .pastEventPhoto {
         width: 100px;
         aspect-ratio: 1;
-    }
-    .totalKey {
-        font-size: large;
-    }
-    .totalValue {
-        font-size: large;
-    }
-    .title {
-        font-size: large;
     }
 }
